@@ -6,5 +6,22 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/torneofutbol</property>
     <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <mapping class="com.ipn.mx.model.entities.RepresentanteId"/>
+    <mapping class="com.ipn.mx.model.entities.Partido"/>
+    <mapping class="com.ipn.mx.model.entities.Torneo"/>
+    <mapping class="com.ipn.mx.model.entities.PartidoId"/>
+    <mapping class="com.ipn.mx.model.entities.PartidoEquipo"/>
+    <mapping class="com.ipn.mx.model.entities.Coordinador"/>
+    <mapping class="com.ipn.mx.model.entities.EventoId"/>
+    <mapping class="com.ipn.mx.model.entities.Equipo"/>
+    <mapping class="com.ipn.mx.model.entities.Jugador"/>
+    <mapping class="com.ipn.mx.model.entities.PartidoEquipoId"/>
+    <mapping class="com.ipn.mx.model.entities.Evento"/>
+    <mapping class="com.ipn.mx.model.entities.JugadorId"/>
+    <mapping class="com.ipn.mx.model.entities.Representante"/>
   </session-factory>
 </hibernate-configuration>

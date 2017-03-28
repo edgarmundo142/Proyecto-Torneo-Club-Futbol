@@ -1,0 +1,102 @@
+/*--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+
+/*--footer--*/
+body {
+	margin: 0 auto;
+	background-image: url("../images/bg.jpg");
+	background-repeat: no-repeat;
+	background-size: auto;
+}
+#div-container-login {
+	text-align: center;
+}
+.footer-section {
+   margin-top: 200px; 
+}
+.editor-pics {
+       margin-bottom: 0.7em;
+}
+.footer-grid h5 {
+    font-size: 1.2em;
+    color: #fff;
+    padding: 0;
+    margin-bottom: 1.5em;
+}
+.td-post-date {
+    color:#ffcc00;
+    font-size: 0.8em;
+    margin: 0.5em 0;
+}
+.footer-grids{
+   text-align: center;
+}
+.footer-grid {
+    padding-left: 0;
+	    padding: 2em 0;
+}
+.item-pic {
+    padding: 0;
+}
+input[type="text"] {
+    width: 100%;
+   padding: 12px 10px;
+    border: none;
+    font-size: 0.9em;
+    color: #202021;
+    outline: none;
+    background: #fff;
+    font-weight: 400;
+        border: 1px solid #FFFFFF;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+.sign_up input[type="submit"] {
+    color: #fff;
+    font-size: 1em;
+    font-weight: 400;
+    border: none;
+    display: block;
+    padding: 8px 30px;
+    outline: none;
+    background: #005894;
+    margin-top: 0.5em;
+    width: 100%;
+}
+.sign_up input[type="submit"]:hover {
+    background:#0275d8;
+}
+
+.sign_up a:hover {
+    color:#FFF;
+}
+
+.footer-grid.third {
+    background:#282828;
+    margin: 0 auto;
+	margin-top: -22px;
+    /*background-color: #ffcc00;*/
+       padding: 2em 3em;
+}
+.footer-grid.third h4 span {
+    color: #000;
+}
+p.sign {
+    color: #fff;
+    font-size: 0.9em;
+    margin-bottom:0.5em;
+}
+
+
+.btn-recover:hover {
+    color: #000000;
+}
+
+.btn-recover {
+    color: #FFFFFF;
+}
