@@ -42,14 +42,14 @@ public class ControladorRegistroRepresentante extends HttpServlet {
         String password_user = request.getParameter("password_representante");
         /***Construccion de beans***/
         JugadorId representanteId = new JugadorId(nombre_rep, apellido_paterno, apellido_materno, correo);
-        Jugador representante = new Jugador(representanteId, boleta, false);
+        Jugador representante = new Jugador(representanteId, "foto.jpg", false);
         representante.setClave(password_user);
-        representante.setFoto("foto.jpg");
         RepresentanteId idRep = new RepresentanteId(representante.getId().getNombre(), representante.getId().getApellidoPaterno(), 
                 representante.getId().getApellidoMaterno(), representante.getId().getCorreo());
         Representante R = new Representante(representante, password_user, telefono);
         R.setId(idRep);
         representante.setRepresentante(R);
+        System.out.println("Representante de Equipo registrado...");
         /***Transacciones***/
         RepresentanteDAO dao = new RepresentanteDAO();
         try {
