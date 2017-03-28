@@ -33,7 +33,7 @@ public class Evento  implements java.io.Serializable {
      private String tipoEvento;
      private Date fechaFin;
      private Date fechaInicio;
-     private Set partidos = new HashSet(0);
+     private Set<Partido> partidos = new HashSet<Partido>(0);
 
     public Evento() {
     }
@@ -45,7 +45,7 @@ public class Evento  implements java.io.Serializable {
         this.fechaFin = fechaFin;
         this.fechaInicio = fechaInicio;
     }
-    public Evento(EventoId id, Torneo torneo, String tipoEvento, Date fechaFin, Date fechaInicio, Set partidos) {
+    public Evento(EventoId id, Torneo torneo, String tipoEvento, Date fechaFin, Date fechaInicio, Set<Partido> partidos) {
        this.id = id;
        this.torneo = torneo;
        this.tipoEvento = tipoEvento;
@@ -109,11 +109,11 @@ public class Evento  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="evento")
-    public Set getPartidos() {
+    public Set<Partido> getPartidos() {
         return this.partidos;
     }
     
-    public void setPartidos(Set partidos) {
+    public void setPartidos(Set<Partido> partidos) {
         this.partidos = partidos;
     }
 

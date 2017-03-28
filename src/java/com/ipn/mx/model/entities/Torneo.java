@@ -27,8 +27,8 @@ public class Torneo  implements java.io.Serializable {
      private Coordinador coordinador;
      private String nombre;
      private String tipoTorneo;
-     private Set equipos = new HashSet(0);
-     private Set eventos = new HashSet(0);
+     private Set<Equipo> equipos = new HashSet<Equipo>(0);
+     private Set<Evento> eventos = new HashSet<Evento>(0);
 
     public Torneo() {
     }
@@ -40,7 +40,7 @@ public class Torneo  implements java.io.Serializable {
         this.nombre = nombre;
         this.tipoTorneo = tipoTorneo;
     }
-    public Torneo(int idTorneo, Coordinador coordinador, String nombre, String tipoTorneo, Set equipos, Set eventos) {
+    public Torneo(int idTorneo, Coordinador coordinador, String nombre, String tipoTorneo, Set<Equipo> equipos, Set<Evento> eventos) {
        this.idTorneo = idTorneo;
        this.coordinador = coordinador;
        this.nombre = nombre;
@@ -92,20 +92,20 @@ public class Torneo  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="torneo")
-    public Set getEquipos() {
+    public Set<Equipo> getEquipos() {
         return this.equipos;
     }
     
-    public void setEquipos(Set equipos) {
+    public void setEquipos(Set<Equipo> equipos) {
         this.equipos = equipos;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="torneo")
-    public Set getEventos() {
+    public Set<Evento> getEventos() {
         return this.eventos;
     }
     
-    public void setEventos(Set eventos) {
+    public void setEventos(Set<Evento> eventos) {
         this.eventos = eventos;
     }
 

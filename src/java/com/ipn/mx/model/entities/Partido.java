@@ -28,7 +28,7 @@ public class Partido  implements java.io.Serializable {
 
      private PartidoId id;
      private Evento evento;
-     private Set partidoEquipos = new HashSet(0);
+     private Set<PartidoEquipo> partidoEquipos = new HashSet<PartidoEquipo>(0);
 
     public Partido() {
     }
@@ -72,11 +72,11 @@ public class Partido  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="partido")
-    public Set getPartidoEquipos() {
+    public Set<PartidoEquipo> getPartidoEquipos() {
         return this.partidoEquipos;
     }
     
-    public void setPartidoEquipos(Set partidoEquipos) {
+    public void setPartidoEquipos(Set<PartidoEquipo> partidoEquipos) {
         this.partidoEquipos = partidoEquipos;
     }
 

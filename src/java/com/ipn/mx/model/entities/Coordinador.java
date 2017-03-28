@@ -23,7 +23,7 @@ public class Coordinador  implements java.io.Serializable {
 
      private String usuario;
      private String contrasenia;
-     private Set torneos = new HashSet(0);
+     private Set<Torneo> torneos = new HashSet<Torneo>(0);
 
     public Coordinador() {
     }
@@ -32,7 +32,7 @@ public class Coordinador  implements java.io.Serializable {
     public Coordinador(String usuario) {
         this.usuario = usuario;
     }
-    public Coordinador(String usuario, String contrasenia, Set torneos) {
+    public Coordinador(String usuario, String contrasenia, Set<Torneo> torneos) {
        this.usuario = usuario;
        this.contrasenia = contrasenia;
        this.torneos = torneos;
@@ -61,11 +61,11 @@ public class Coordinador  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="coordinador")
-    public Set getTorneos() {
+    public Set<Torneo> getTorneos() {
         return this.torneos;
     }
     
-    public void setTorneos(Set torneos) {
+    public void setTorneos(Set<Torneo> torneos) {
         this.torneos = torneos;
     }
 

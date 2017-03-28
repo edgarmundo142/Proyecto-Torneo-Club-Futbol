@@ -34,8 +34,8 @@ public class Equipo  implements java.io.Serializable {
      private int partidosJugados;
      private Integer golesAfavor;
      private Integer golesEnContra;
-     private Set partidoEquipos = new HashSet(0);
-     private Set jugadors = new HashSet(0);
+     private Set<PartidoEquipo> partidoEquipos = new HashSet<PartidoEquipo>(0);
+     private Set<Jugador> jugadors = new HashSet<Jugador>(0);
 
     public Equipo() {
     }
@@ -48,7 +48,7 @@ public class Equipo  implements java.io.Serializable {
         this.estaPendiente = estaPendiente;
         this.partidosJugados = partidosJugados;
     }
-    public Equipo(String nombre, Torneo torneo, String colorDeUniforme, String grupo, boolean estaPendiente, Integer puntos, int partidosJugados, Integer golesAfavor, Integer golesEnContra, Set partidoEquipos, Set jugadors) {
+    public Equipo(String nombre, Torneo torneo, String colorDeUniforme, String grupo, boolean estaPendiente, Integer puntos, int partidosJugados, Integer golesAfavor, Integer golesEnContra, Set<PartidoEquipo> partidoEquipos, Set<Jugador> jugadors) {
        this.nombre = nombre;
        this.torneo = torneo;
        this.colorDeUniforme = colorDeUniforme;
@@ -155,23 +155,26 @@ public class Equipo  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="equipo")
-    public Set getPartidoEquipos() {
+    public Set<PartidoEquipo> getPartidoEquipos() {
         return this.partidoEquipos;
     }
     
-    public void setPartidoEquipos(Set partidoEquipos) {
+    public void setPartidoEquipos(Set<PartidoEquipo> partidoEquipos) {
         this.partidoEquipos = partidoEquipos;
     }
 
 @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(name="jugador_equipo", catalog="torneofutbol", joinColumns = { 
         @JoinColumn(name="Equipo_nombre", nullable=false, updatable=false) }, inverseJoinColumns = { 
-        @JoinColumn(name="Jugador_nombre", nullable=false, updatable=false) })
-    public Set getJugadors() {
+        @JoinColumn(name="Jugador_nombre", nullable=false, updatable=false),
+        @JoinColumn(name="Jugador_apellidoPaterno", nullable=false, updatable=false), 
+        @JoinColumn(name="Jugador_apellidoMaterno", nullable=false, updatable=false), 
+        @JoinColumn(name="Jugador_correo", nullable=false, updatable=false) })
+    public Set<Jugador> getJugadors() {
         return this.jugadors;
     }
     
-    public void setJugadors(Set jugadors) {
+    public void setJugadors(Set<Jugador> jugadors) {
         this.jugadors = jugadors;
     }
 

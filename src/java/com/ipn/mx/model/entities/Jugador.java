@@ -31,7 +31,7 @@ public class Jugador  implements java.io.Serializable {
      private String clave;
      private boolean estaVetado;
      private Representante representante;
-     private Set equipos = new HashSet(0);
+     private Set<Equipo> equipos = new HashSet<Equipo>(0);
 
     public Jugador() {
     }
@@ -42,7 +42,7 @@ public class Jugador  implements java.io.Serializable {
         this.foto = foto;
         this.estaVetado = estaVetado;
     }
-    public Jugador(JugadorId id, String foto, String clave, boolean estaVetado, Representante representante, Set equipos) {
+    public Jugador(JugadorId id, String foto, String clave, boolean estaVetado, Representante representante, Set<Equipo> equipos) {
        this.id = id;
        this.foto = foto;
        this.clave = clave;
@@ -113,16 +113,13 @@ public class Jugador  implements java.io.Serializable {
         @JoinColumn(name="Jugador_apellidoMaterno", nullable=false, updatable=false), 
         @JoinColumn(name="Jugador_correo", nullable=false, updatable=false) }, inverseJoinColumns = { 
         @JoinColumn(name="Equipo_nombre", nullable=false, updatable=false) })
-    public Set getEquipos() {
+    public Set<Equipo> getEquipos() {
         return this.equipos;
     }
     
-    public void setEquipos(Set equipos) {
+    public void setEquipos(Set<Equipo> equipos) {
         this.equipos = equipos;
     }
-
-
-
 
 }
 
