@@ -1,7 +1,7 @@
 <%-- 
     Document   : ErrorRegistro
     Created on : 28/03/2017, 02:54:47 PM
-    Author     : rafal
+    Author     : rafael
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

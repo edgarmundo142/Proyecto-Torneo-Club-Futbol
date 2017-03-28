@@ -7,7 +7,6 @@ import com.ipn.mx.model.entities.Representante;
 import com.ipn.mx.model.entities.RepresentanteId;
 
 import java.io.IOException;
-//import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
