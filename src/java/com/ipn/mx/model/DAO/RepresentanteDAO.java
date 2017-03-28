@@ -152,6 +152,7 @@ public class RepresentanteDAO {
     
     public static void main(String[] args) {
         RepresentanteDAO t = new RepresentanteDAO();
+        /**skjdfhsdahfakjsdaskdfskda*/
         JugadorId id = new JugadorId("Nombre2", "Apellido Paterno2", "Apellido Materno2", "Correo1@jugador2");
         Jugador jugador = new Jugador(id, "Foto.jpg", false);
         RepresentanteId idRep = new RepresentanteId(jugador.getId().getNombre(), jugador.getId().getApellidoPaterno(), 
