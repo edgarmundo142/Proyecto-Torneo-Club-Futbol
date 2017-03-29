@@ -11,7 +11,7 @@ $(document).ready(function(){
         jugador = $(this).attr("data-name");
         var lobibox = Lobibox.confirm({
             msg: "Est&aacute;s seguro que quieres eliminar a " + jugador,
-            title: "Confirmacion",
+            title: "Confirmaci&oacute;n",
             buttons: {
                 yes: {
                     'class': 'btn btn-success',
@@ -39,7 +39,7 @@ $(document).ready(function(){
         });
     });
     
-    $('#actualizarJugador').click(function(){
+    /*$('#actualizarJugador').click(function(){
         $('#myModal').modal('hide');
         Lobibox.notify("success",{
             title:"Jugador actualizado",
@@ -49,6 +49,43 @@ $(document).ready(function(){
             width:400,
             iconSource:"fontAwesome"
         });
-    });
+    });*/
+    
+    $.validate({
+		form:"#formularioActualizarJugador",
+		lang:"es",
+        modules : 'file',
+		onSuccess: function(){
+            var lobibox = Lobibox.confirm({
+                msg: "Est&aacute;s seguro que desea actualizar la informaci&oacute;n " + jugador,
+                title: "Confirmaci&oacute;n",
+                buttons: {
+                    yes: {
+                        'class': 'btn btn-success',
+                        text: "Si",
+                        closeOnClick: true
+                    },
+                    cancel: {
+                        'class': 'btn btn-danger',
+                        text: 'Cancelar',
+                        closeOnClick: true
+                    }
+                },
+                callback: function(lobibox, type){
+                if(type == 'yes'){
+                    Lobibox.notify("success",{
+                        title:"Jugador actualizado",
+                        msg:"Se actualizo la informaci&oacute;n correctamente",
+                        position:"bottom right",
+                        delay:4000,
+                        width:400,
+                        iconSource:"fontAwesome"
+                    });
+                }
+            },
+            });
+            return false;
+        }
+	});
 });
 
