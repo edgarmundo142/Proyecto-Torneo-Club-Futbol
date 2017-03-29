@@ -73,14 +73,23 @@ $(document).ready(function(){
                 },
                 callback: function(lobibox, type){
                 if(type == 'yes'){
-                    Lobibox.notify("success",{
+                    alert('ok');
+                    $.ajax({
+                        method:"post",
+                        url:"ControladorActualizarJugador",
+                        data:"nombre=edgar&correo=hola@hola.com&telefono=7731256415",
+                        success: function(resp){
+                            alert(resp);
+                        }
+                    });
+                    /*Lobibox.notify("success",{
                         title:"Jugador actualizado",
                         msg:"Se actualizo la informaci&oacute;n correctamente",
                         position:"bottom right",
                         delay:4000,
                         width:400,
                         iconSource:"fontAwesome"
-                    });
+                    });*/
                 }
             },
             });
