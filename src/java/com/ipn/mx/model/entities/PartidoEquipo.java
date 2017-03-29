@@ -31,8 +31,7 @@ public class PartidoEquipo  implements java.io.Serializable {
 
     public PartidoEquipo() {
     }
-
-	
+    
     public PartidoEquipo(PartidoEquipoId id, Equipo equipo, Partido partido) {
         this.id = id;
         this.equipo = equipo;
@@ -109,5 +108,3 @@ public class PartidoEquipo  implements java.io.Serializable {
 
 
 }
-
-
