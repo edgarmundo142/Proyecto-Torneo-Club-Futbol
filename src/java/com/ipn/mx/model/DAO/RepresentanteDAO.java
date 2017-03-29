@@ -42,6 +42,7 @@ public class RepresentanteDAO {
             sesion.save(datosRepresentante);
             transaccion.commit();
         } catch (HibernateException e) {
+            e.printStackTrace();
             if (transaccion != null && transaccion.isActive()) {
                 transaccion.rollback();
             }
@@ -151,15 +152,15 @@ public class RepresentanteDAO {
     
     public static void main(String[] args) {
         RepresentanteDAO t = new RepresentanteDAO();
-        JugadorId id = new JugadorId("Nombre3", "Apellido Paterno3", "Apellido Materno3", "Correo3@jugador3");
+        JugadorId id = new JugadorId("iodksdsa", "isdjfkdsfsn", "mdsjhwjwe", "osjdfksd@klsdjfsdju");
         Jugador jugador = new Jugador(id, "Foto3.jpg", false);
         RepresentanteId idRep = new RepresentanteId(jugador.getId().getNombre(), jugador.getId().getApellidoPaterno(), 
                 jugador.getId().getApellidoMaterno(), jugador.getId().getCorreo());
-        Representante representante = new Representante(jugador, "******", "04454555555444");
+        Representante representante = new Representante(jugador, "isjdfmksdtoot", "43534565465445");
         representante.setId(idRep);
         jugador.setRepresentante(representante);
         t.guardarDatosPersonalesRepresentante(jugador);
-        t.guardarRepresentante(representante);
+        //t.guardarRepresentante(representante);
         System.out.println("Hecho!!!");
     }
 }

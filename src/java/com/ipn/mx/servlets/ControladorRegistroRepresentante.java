@@ -7,12 +7,18 @@ import com.ipn.mx.model.entities.Representante;
 import com.ipn.mx.model.entities.RepresentanteId;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.*;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.*;
+import org.apache.commons.fileupload.disk.*;
+import org.apache.commons.fileupload.servlet.*;
 
 /**
  *
@@ -31,41 +37,54 @@ public class ControladorRegistroRepresentante extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher vista;
-        String ruta;
-        String nombre_rep = request.getParameter("nombre_representante");
-        String apellido_paterno = request.getParameter("apellido_paterno");
-        String apellido_materno = request.getParameter("apellido_materno");
-        String telefono = request.getParameter("tel_representante");
-        String correo = request.getParameter("correo_representante");
-        String boleta = request.getParameter("boleta_representante");
-        String password_user = request.getParameter("password_representante");
-        /***Construccion de beans***/
-        JugadorId representanteId = new JugadorId(nombre_rep, apellido_paterno, apellido_materno, correo);
-        Jugador representante = new Jugador(representanteId, "foto.jpg", false);
-        representante.setClave(password_user);
-        RepresentanteId idRep = new RepresentanteId(representante.getId().getNombre(), representante.getId().getApellidoPaterno(), 
-                representante.getId().getApellidoMaterno(), representante.getId().getCorreo());
-        Representante R = new Representante(representante, password_user, telefono);
-        R.setId(idRep);
-        representante.setRepresentante(R);
-        System.out.println("Representante de Equipo registrado...");
-        /***Transacciones***/
-        RepresentanteDAO dao = new RepresentanteDAO();
         try {
-            dao.guardarDatosPersonalesRepresentante(representante);
-            dao.guardarRepresentante(R);
-            ruta = "login.html";
-        } catch (Exception e) {
-            ruta = "jsp/ErrorRegistro.jsp?error=" + e.getMessage();
-        }
-        try {
-            vista = request.
-                getRequestDispatcher(ruta);
-            vista.forward(request, response);
-        } catch (ServletException | IOException ex) {
-            System.out.println("Error de redireccion de pagina: " + ex.getMessage());
-        }
+            RequestDispatcher vista;
+            String ruta;
+            /***Captura de campos del formulario***/
+            String nombre_rep = request.getParameter("nombre_representante");
+            String apellido_paterno = request.getParameter("apellido_paterno");
+            String apellido_materno = request.getParameter("apellido_materno");
+            String telefono = request.getParameter("tel_representante");
+            String correo = request.getParameter("correo_representante");
+            String boleta = request.getParameter("boleta_representante");
+            String password_user = request.getParameter("password_representante");
+            
+            System.out.println("Nombre: " + nombre_rep);
+            System.out.println("apellido_paterno: " + apellido_materno);
+            System.out.println("apellido_materno: " + apellido_materno);
+            System.out.println("telefono: " + telefono);
+            System.out.println("correo_representante: " + correo);
+            System.out.println("boleta_representante: " + boleta);
+            System.out.println("password_representante: " + password_user);
+            
+            /***Construccion de beans***/
+            JugadorId id = new JugadorId(nombre_rep, apellido_paterno, apellido_materno, correo);
+            Jugador jugador = new Jugador(id, "Foto3.jpg", false);
+            jugador.setClave(boleta);
+            
+            RepresentanteId idRep = new RepresentanteId(jugador.getId().getNombre(), jugador.getId().getApellidoPaterno(),
+                    jugador.getId().getApellidoMaterno(), jugador.getId().getCorreo());
+            Representante representante = new Representante(jugador, password_user, telefono);
+            representante.setId(idRep);
+            
+            /***Transacciones***/
+            RepresentanteDAO dao = new RepresentanteDAO();
+            try {
+                dao.guardarDatosPersonalesRepresentante(jugador);
+                dao.guardarRepresentante(representante);
+                System.out.println("Representante de Equipo registrado...");
+                ruta = "login.html";
+            } catch (Exception e) {
+                ruta = "jsp/ErrorRegistro.jsp?error=" + e.getMessage();
+            }
+            try {
+                vista = request.
+                        getRequestDispatcher(ruta);
+                vista.forward(request, response);
+            } catch (ServletException | IOException ex) {
+                System.out.println("Error de redireccion de pagina: " + ex.getMessage());
+            }
+            
 //        response.setContentType("text/html;charset=UTF-8");
 //        try (PrintWriter out = response.getWriter()) {
 //            /* TODO output your page here. You may use following sample code. */
@@ -79,6 +98,9 @@ public class ControladorRegistroRepresentante extends HttpServlet {
 //            out.println("</body>");
 //            out.println("</html>");
 //        }
+        } catch (Exception ex) {
+            System.out.println("Fallo al asignar archivo al sistema: " + ex.getMessage());
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
