@@ -22,6 +22,9 @@
 <!-- Estilos de lobibox (notificaciones) -->
 <link rel="stylesheet" type="text/css" href="plugins/lobibox/css/lobibox.min.css">
 
+<!-- Estilos del form validator-->
+<link rel="stylesheet" type="text/css" href="plugins/form-validator/theme-default.min.css">
+
 <!-- Scripts -->
 <script src="js/jquery-3.2.0.min.js"></script>
 <script src="js/tether.min.js"></script>
@@ -29,6 +32,7 @@
 <script src="js/navbar-fixed.js"></script>
 <script src="js/inicioRepresentante.js"></script>
 <script language="javascript" type="text/javascript" src="plugins/lobibox/js/lobibox.min.js"></script>
+<script type="text/javascript" src="plugins/form-validator/jquery.form-validator.min.js"></script>
 
 </head>
 
@@ -108,7 +112,7 @@
                      <h6 class="fa-1x">Registrar jugador</h6>
                   </div>
                   <div class="col-lg-1 col-sm-1">
-                      <i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
+                      <i class="fa fa-plus-square-o fa-2x registrarJugador" aria-hidden="true"></i>
                   </div>
                </div>
                 <table class="table table-hover table-responsive">
@@ -203,29 +207,29 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="formularioActualizarJugador">
           <div class="form-group">
             <label for="nombre">Nombre completo</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Nombre del jugador">
+            <input type="text" class="form-control" id="nombre" value="Edgar Rodrigo Arredondo Basurto" disabled>
           </div>
           <div class="form-group">
             <label for="correo">Correo</label>
-            <input type="email" class="form-control" id="correo" placeholder="correo@ejemplo.com">
+            <input class="form-control" id="correo" placeholder="correo@ejemplo.com" data-validation="required" data-validation="email">
           </div>
           <div class="form-group">
             <label for="telefono">Tel&eacute;fono</label>
-            <input type="text" class="form-control" id="telefono" placeholder="55-55-55-55-55">
+            <input type="text" class="form-control" id="telefono" placeholder="55-55-55-55-55" data-validation="custom" data-validation-regexp="^\d([- ]*\d){8,12}$" data-validation-length="max20" data-validation-error-msg="El dato ingresado no es tel&eacute;fono v&aacute;lido">
           </div>
           <div class="form-group">
             <label for="foto">Fotograf&iacute;a</label>
-            <input type="file" class="form-control-file" id="foto" aria-describedby="fileHelp">
+            <input type="file" class="form-control-file" id="foto" data-validation="extension" data-validation-allowing="jpg, png, gif" data-validation-max-size="1M">
             <small id="fileHelp" class="form-text text-muted">Subir una fotograf&iacute;a semiformal del jugador.</small>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary" id="actualizarJugador">Guardar los cambios</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="actualizarJugador">Guardar los cambios</button>
       </div>
     </div>
   </div>
