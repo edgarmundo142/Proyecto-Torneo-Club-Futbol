@@ -17,7 +17,7 @@ $(document).ready(function(){
     $(".deletePlayer").click(function(){
         jugador = $(this).attr("data-name");
         var lobibox = Lobibox.confirm({
-            msg: "Est&aacute;s seguro que quieres eliminar a " + jugador,
+            msg: "Est&aacute;s seguro que quieres eliminar al jugador " + jugador,
             title: "Confirmaci&oacute;n",
             buttons: {
                 yes: {
@@ -64,7 +64,7 @@ $(document).ready(function(){
         modules : 'file',
 		onSuccess: function(){
             var lobibox = Lobibox.confirm({
-                msg: "Est&aacute;s seguro que desea actualizar la informaci&oacute;n " + jugador,
+                msg: "Est&aacute;s seguro que desea actualizar la informaci&oacute;n",
                 title: "Confirmaci&oacute;n",
                 buttons: {
                     yes: {
@@ -110,7 +110,7 @@ $(document).ready(function(){
         modules : 'file',
 		onSuccess: function(){
             var lobibox = Lobibox.confirm({
-                msg: "Est&aacute;s seguro que desea actualizar la informaci&oacute;n " + jugador,
+                msg: "Est&aacute;s seguro que quires registrar al jugador ",
                 title: "Confirmaci&oacute;n",
                 buttons: {
                     yes: {
@@ -126,7 +126,6 @@ $(document).ready(function(){
                 },
                 callback: function(lobibox, type){
                 if(type == 'yes'){
-                    alert('ok');
                     $.ajax({
                         method:"post",
                         url:"ControladorRegistrarJugador",
@@ -135,14 +134,14 @@ $(document).ready(function(){
                             alert(resp);
                         }
                     });
-                    /*Lobibox.notify("success",{
+                    Lobibox.notify("success",{
                         title:"Jugador actualizado",
-                        msg:"Se actualizo la informaci&oacute;n correctamente",
+                        msg:"Se registr&oacute; al jugador correctamente",
                         position:"bottom right",
                         delay:4000,
                         width:400,
                         iconSource:"fontAwesome"
-                    });*/
+                    });
                 }
             },
             });
