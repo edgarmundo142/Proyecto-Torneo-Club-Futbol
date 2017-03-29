@@ -4,9 +4,25 @@
         <servlet-name>ControladorRegistroRepresentante</servlet-name>
         <servlet-class>com.ipn.mx.servlets.ControladorRegistroRepresentante</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorActualizarJugador</servlet-name>
+        <servlet-class>com.ipn.mx.servlets.ControladorActualizarJugador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorRegistrarJugador</servlet-name>
+        <servlet-class>com.ipn.mx.servlets.ControladorRegistrarJugador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorRegistroRepresentante</servlet-name>
         <url-pattern>/ControladorRegistroRepresentante</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorActualizarJugador</servlet-name>
+        <url-pattern>/ControladorActualizarJugador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorRegistrarJugador</servlet-name>
+        <url-pattern>/ControladorRegistrarJugador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
