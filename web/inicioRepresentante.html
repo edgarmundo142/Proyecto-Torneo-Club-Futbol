@@ -363,33 +363,45 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Actualizar Datos del Perfil</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--modalContraseñaPerfil-->
-<div class="modal fade" id="modalContraseñaPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+         <form id="formularioActualizarRepresentante">
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" class="form-control" id="nombre" value="Edgar Rodrigo Arredondo Basurto" disabled>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Tel&eacute;fono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="55-55-55-55-55" data-validation="custom" data-validation-regexp="^\d([- ]*\d){8,12}$" data-validation-length="max20" data-validation-error-msg="El dato ingresado no es tel&eacute;fono v&aacute;lido">
+          </div>
+          <div class="form-group">
+            <label for="correo">Correo</label>
+            <input class="form-control" id="correo" name="correo" placeholder="correo@ejemplo.com" data-validation="required" data-validation="email">
+          </div>
+          <div class="form-group">
+            <label for="foto">Fotograf&iacute;a</label>
+            <input type="file" class="form-control-file" id="foto" name="foto" data-validation="required extension" data-validation-allowing="jpg, png, gif" data-validation-max-size="1M">
+            <small id="fileHelp" class="form-text text-muted">Subir una fotograf&iacute;a semiformal del jugador.</small>
+          </div>
+          <div class="form-group">
+            <label for="contraseña">Contraseña</label>
+            <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="contraseña" data-validation="required" >
+          </div>
+          <div class="form-group">
+            <label for="nuevacontraseña">Nueva contraseña</label>
+            <input type="password" class="form-control" id="nuevacontraseña" name="nuevacontraseña" placeholder="nuevacontraseña">
+          </div>
+          <div class="form-group">
+            <label for="nuevacontraseña1">Confirmar nueva contraseña</label>
+            <input type="password" class="form-control" id="nuevacontraseña1" name="nuevacontraseña1" placeholder="nuevacontraseña">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary" id="actualizarJugador">Actualizar Perfil</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
