@@ -123,39 +123,13 @@
                       <th>Apellido Paterno</th>
                       <th>Apellido Materno</th>
                       <th>Correo</th>
-                      <th>Boleta</th>
+                      <!--<th>Boleta</th>-->
                       <th>Fotograf&iacute;a</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark1</td>
-                      <td>Otto</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>2014360715</td>
-                      <td>Foto</td>
-                      <td>
-                          <i class="fa fa-edit fa-1x editPlayer icono" aria-hidden="true" data-name="Mark1"></i>
-                          <i class="fa fa-close fa-1x deletePlayer icono" aria-hidden="true" data-name="Mark1"></i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark2</td>
-                      <td>Otto</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>2014360715</td>
-                      <td>Foto</td>
-                      <td>
-                          <i class="fa fa-edit fa-1x editPlayer icono" aria-hidden="true" data-name="Mark2"></i>
-                          <i class="fa fa-close fa-1x deletePlayer icono" aria-hidden="true" data-name="Mark2"></i>
-                      </td>
-                    </tr>
-                    
+                  <tbody id="tablaDeJugadoresRegistrados">
+                    <!--datos dinamicos-->
                   </tbody>
                 </table>
                 <br><h2 class="text-light">Mis equipos <i class="fa fa-users fa-1x" aria-hidden="true"></i></h2>
@@ -315,15 +289,17 @@
         <form id="formularioRegistrarEquipo">
           <div class="form-group">
             <label for="nombreEquipo">Nombre del equipo</label>
-            <input type="text" class="form-control" id="nombreEquipo" name="equipo" data-validation="required">
+            <input type="text" class="form-control" id="freNombreEquipo" name="freNombreEquipo" data-validation="required">
           </div>
           <div class="form-group">
-            <label for="correo">Torneo</label>
-            <input class="form-control" id="torneo" name="torneo" data-validation="required">
-          </div>
+            <label for="freTorneo">Example select</label>
+            <select class="form-control" id="freTorneo">
+              <option>Asociaci&oacute;n</option>
+              <option>R&aacute;pido</option>
+            </select>
           <div class="form-group">
-            <label for="telefono">Color del uniforme</label>
-            <input type="text" class="form-control" id="colorUniforme" data-validation="required" name="colorUniforme">
+            <label for="freColorUniforme">Color del uniforme</label>
+            <input type="text" class="form-control" id="freColorUniforme" data-validation="required" name="freColorUniforme">
           </div>
           <div class="form-group">
              <label for="jugadores">Plantilla del equipo</label>
