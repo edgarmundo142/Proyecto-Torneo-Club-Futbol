@@ -31,6 +31,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/navbar-fixed.js"></script>
 <script src="js/inicioRepresentante.js"></script>
+<script src="js/PerfilRepresentante.js"></script>
 <script language="javascript" type="text/javascript" src="plugins/lobibox/js/lobibox.min.js"></script>
 <script type="text/javascript" src="plugins/form-validator/jquery.form-validator.min.js"></script>
 
@@ -48,25 +49,10 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" href="#about">Convocatoria</a>
+        <a class="nav-link active" href="index.html">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#section1">Pr&oacute;ximos partidos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#section2">Tabla de grupos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#section3">Calendario</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#section4">Reglamento general</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.html">Iniciar sesi&oacute;n</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="RegistroRepresentante.html">Registrarse</a>
+        <a class="nav-link" href="index.html">Cerrar Sesión</a>
       </li>
     </ul>
   </div>
@@ -85,14 +71,14 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <center><br><h1 class="text-light">Bienvenido "nombre"</h1></center>
+        <center><br><h1 class="text-light">Bienvenido Representante</h1></center>
          <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#inicio" role="tab">Inicio</a>
+                <a class="nav-link active" data-toggle="tab" href="#inicio" role="tab">Principal</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#gestionar" role="tab">Gestionar equipos</a>
+                <a class="nav-link" data-toggle="tab" href="#gestionar" role="tab">Gestionar Equipos</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#perfil" role="tab">Perfil</a>
@@ -105,17 +91,17 @@
                   Pantalla inicio representante 1
               </div>
               <div class="tab-pane" id="gestionar" role="tabpanel">
-               <br><h2 class="text-light">Mis jugadores <i class="fa fa-users fa-1x" aria-hidden="true"></i></h2>
+               <br><h2 class="text-light">Mis Jugadores <i class="fa fa-users fa-1x" aria-hidden="true"></i></h2>
                <br>
                <div class="row">
                   <div class="col-lg-2 col-sm-4">
-                     <h6 class="fa-1x">Registrar jugador</h6>
+                     <h6 class="fa-1x">Registrar Jugador</h6>
                   </div>
                   <div class="col-lg-1 col-sm-1">
                       <i class="fa fa-plus-square-o fa-2x registrarJugador icono" aria-hidden="true"></i>
                   </div>
                </div>
-                <table class="table table-hover table-responsive">
+                <table class="table table-hover table-responsive" id="misJugadores">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -132,17 +118,17 @@
                     <!--datos dinamicos-->
                   </tbody>
                 </table>
-                <br><h2 class="text-light">Mis equipos <i class="fa fa-users fa-1x" aria-hidden="true"></i></h2>
+                <br><h2 class="text-light">Mis Equipos <i class="fa fa-users fa-1x" aria-hidden="true"></i></h2>
                <br>
                <div class="row">
                   <div class="col-lg-2 col-sm-4">
-                     <h6 class="fa-1x">Registrar equipo</h6>
+                     <h6 class="fa-1x">Registrar Equipo</h6>
                   </div>
                   <div class="col-lg-1 col-sm-1">
                       <i class="fa fa-plus-square-o fa-2x registrarEquipo icono" aria-hidden="true"></i>
                   </div>
                </div>
-                <table class="table table-hover table-responsive">
+                <table class="table table-hover table-responsive" id="misEquipos">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -180,7 +166,30 @@
                 </table>
               </div>
               <div class="tab-pane" id="perfil" role="tabpanel">
-                  Perfil del representante
+                  <br><h2 class="text-light">Datos del Perfil <i class="fa fa-user fa-1x" aria-hidden="true"></i></h2>
+                  <br>
+                  <table class="table table-hover table-responsive">
+                  <thead>
+                    <tr>
+                      <th>Nombre(s)</th>
+                      <th>Apellido Paterno</th>
+                      <th>Apellido Materno</th>
+                      <th>Correo</th>
+                      <th>Fotograf&iacute;a</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mark1</td>
+                      <td>Otto</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td>Foto</td>
+                    </tr>
+                  </tbody>
+                </table>
+                  <br>
+                  <a class="btn btn-secondary">Actualizar Informaci&oacute;n <i class="fa fa-edit fa-1x editarDatosPerfil icono" aria-hidden="true" data-name="Papus FC"></i></a>
               </div>
             </div>
       </div>
@@ -188,6 +197,40 @@
   </div>
 </div>
 <!-- modales -->
+
+<!-- modal Ver Plantilla-->
+<div class="modal fade" id="modalVerP" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Plantilla Actual</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="form-group">
+              <table class="table table-hover table-responsive" id="jugadores">
+                  <thead>
+                    <tr>
+                      <th>Jugador</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mark1</td>
+                    </tr>
+                    <tr>
+                      <td>Mark2</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+      </div>
+    </div>
+  </div>
 
 <!-- modal Registrar-->
 <div class="modal fade" id="modalRegistrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -215,15 +258,15 @@
           </div>
           <div class="form-group">
             <label for="correo">Correo</label>
-            <input class="form-control" id="correo" placeholder="correo@ejemplo.com" data-validation="required email">
+            <input class="form-control" id="correo" placeholder="correo@ejemplo.com" data-validation="required email" name="correo">
           </div>
           <div class="form-group">
             <label for="telefono">Tel&eacute;fono</label>
-            <input type="text" class="form-control" id="telefono" placeholder="55-55-55-55-55" data-validation="custom" data-validation-regexp="^\d([- ]*\d){8,12}$" data-validation-length="max20" data-validation-error-msg="El dato ingresado no es tel&eacute;fono v&aacute;lido">
+            <input type="text" class="form-control" id="telefono" placeholder="55-55-55-55-55" data-validation="custom" data-validation-regexp="^\d([- ]*\d){8,12}$" data-validation-length="max20" data-validation-error-msg="El dato ingresado no es tel&eacute;fono v&aacute;lido" name="telefono">
           </div>
           <div class="form-group">
             <label for="foto">Fotograf&iacute;a</label>
-            <input type="file" class="form-control-file" id="foto" data-validation="required extension" data-validation-allowing="jpg, png, gif" data-validation-max-size="1M">
+            <input type="file" class="form-control-file" id="foto" name="foto" data-validation="extension required" data-validation-allowing="jpg, png, gif" data-validation-max-size="1M">
             <small id="fileHelp" class="form-text text-muted">Subir una fotograf&iacute;a semiformal del jugador.</small>
           </div>
           <div class="modal-footer">
@@ -250,7 +293,7 @@
         <form id="formularioActualizarJugador">
           <div class="form-group">
             <label for="nombre">Nombre completo</label>
-            <input type="text" class="form-control" id="nombre" value="Edgar Rodrigo Arredondo Basurto" disabled>
+            <input type="text" class="form-control" id="fajNombre" name="fajNombre" disabled>
           </div>
           <div class="form-group">
             <label for="correo">Correo</label>
@@ -292,18 +335,19 @@
             <input type="text" class="form-control" id="freNombreEquipo" name="freNombreEquipo" data-validation="required">
           </div>
           <div class="form-group">
-            <label for="freTorneo">Example select</label>
+            <label for="freTorneo">Plantilla del equipo</label>
             <select class="form-control" id="freTorneo">
               <option>Asociaci&oacute;n</option>
               <option>R&aacute;pido</option>
             </select>
+          </div>
           <div class="form-group">
             <label for="freColorUniforme">Color del uniforme</label>
             <input type="text" class="form-control" id="freColorUniforme" data-validation="required" name="freColorUniforme">
           </div>
           <div class="form-group">
              <label for="jugadores">Plantilla del equipo</label>
-              <table class="table table-hover table-responsive" id="jugadpres">
+              <table class="table table-hover table-responsive" id="elegirJugadores">
                   <thead>
                     <tr>
                       <th>Seleccionar</th>
@@ -312,11 +356,11 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row"><input type="checkbox" class="form-control" data-jugador="Mark1"></th>
+                      <th scope="row"><input type="checkbox" class="form-control" id="freCheck1" data-jugador="Mark1"></th>
                       <td>Mark1</td>
                     </tr>
                     <tr>
-                      <th scope="row"><input type="checkbox" class="form-control" data-jugador="Mark2"></th>
+                      <th scope="row"><input type="checkbox" class="form-control" id="freCheck2" data-jugador="Mark2"></th>
                       <td>Mark2</td>
                     </tr>
                   </tbody>
@@ -325,6 +369,55 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <button type="submit" class="btn btn-primary" id="actualizarJugador">Registrar equipo</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modalDatosPerfil-->
+<div class="modal fade" id="modalDatosPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Actualizar Datos del Perfil</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+         <form id="formularioActualizarRepresentante">
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" class="form-control" id="nombre" value="Edgar Rodrigo Arredondo Basurto" disabled>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Tel&eacute;fono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="55-55-55-55-55" data-validation="custom" data-validation-regexp="^\d([- ]*\d){8,12}$" data-validation-length="max20" data-validation-error-msg="El dato ingresado no es tel&eacute;fono v&aacute;lido">
+          </div>
+          <div class="form-group">
+            <label for="correo">Correo</label>
+            <input class="form-control" id="correo" name="correo" placeholder="correo@ejemplo.com" data-validation="required" data-validation="email">
+          </div>
+          <div class="form-group">
+            <label for="foto">Fotograf&iacute;a</label>
+            <input type="file" class="form-control-file" id="foto" name="foto" data-validation="required extension" data-validation-allowing="jpg, png, gif" data-validation-max-size="1M">
+            <small id="fileHelp" class="form-text text-muted">Subir una fotograf&iacute;a semiformal del jugador.</small>
+          </div>
+          <div class="form-group">
+            <label for="contraseña">Contraseña</label>
+            <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="contraseña" data-validation="required" >
+          </div>
+          <div class="form-group">
+            <label for="nuevacontraseña">Nueva contraseña</label>
+            <input type="password" class="form-control" id="nuevacontraseña" name="nuevacontraseña" placeholder="nuevacontraseña">
+          </div>
+          <div class="form-group">
+            <label for="nuevacontraseña1">Confirmar nueva contraseña</label>
+            <input type="password" class="form-control" id="nuevacontraseña1" name="nuevacontraseña1" placeholder="nuevacontraseña">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary" id="actualizarJugador">Actualizar Perfil</button>
           </div>
         </form>
       </div>

@@ -1,15 +1,28 @@
 $(document).ready(function(){
     
     /*Inicializar tabla de jugadores registrados por el capitan*/
-    var htmlTabla;
+    var htmlTabla = '';
     $.ajax({
         method:"post",
         url:"ControladorConsultarJugadores",
         success: function(resp){
-            htmlTabla = resp;
+            var jugadores = $.parseJSON(resp);
+            for(i = 0; i < jugadores.length; i++){
+                htmlTabla += "<tr>\n<th scope='row'>1</th>\n<td>" + jugadores[i].nombre + "</td>\n" +
+                            "<td>" + jugadores[i].apellidoPaterno + "</td>\n" +
+                            "<td>" + jugadores[i].apellidoMaterno + "</td>\n" +
+                            "<td>" + jugadores[i].correo + "</td>\n" +
+                            "<td>" + jugadores[i].foto + "</td>\n" +
+                            "<td>\n" +
+                            "<i class='fa fa-edit fa-1x editPlayer icono' aria-hidden='true' data-name='" + jugadores[i].nombre + ":" + jugadores[i].apellidoPaterno + ":" + jugadores[i].apellidoMaterno + "'></i>\n" +
+                            "<i class='fa fa-close fa-1x deletePlayer icono' aria-hidden='true' data-name='" + jugadores[i].nombre + ":" + jugadores[i].apellidoPaterno + ":" + jugadores[i].apellidoMaterno + "'></i>\n" +
+                            "</td>\n</tr>";
+            }
             $('#tablaDeJugadoresRegistrados').html(htmlTabla);
             $(".editPlayer").click(function(){
                 jugador = $(this).attr("data-name");
+                nombre = jugador.replace(/:/g,' ');
+                $('#fajNombre').val(nombre);
                 $('#modalActualizar').modal({
                   keyboard: true
                 })
@@ -49,7 +62,12 @@ $(document).ready(function(){
             });
         }
     });
-    
+    $(".verPlantilla").click(function(){
+        equipo = $(this).attr("data-name");
+        $('#modalVerP').modal({
+          keyboard: true
+        })
+    });
     $(".registrarJugador").click(function(){
         jugador = $(this).attr("data-name");
         $('#modalRegistrar').modal({
@@ -116,7 +134,7 @@ $(document).ready(function(){
         modules : 'file',
 		onSuccess: function(){
             var lobibox = Lobibox.confirm({
-                msg: "Est&aacute;s seguro que quires registrar al jugador ",
+                msg: "Est&aacute;s seguro que quieres registrar al jugador ",
                 title: "Confirmaci&oacute;n",
                 buttons: {
                     yes: {
@@ -132,21 +150,34 @@ $(document).ready(function(){
                 },
                 callback: function(lobibox, type){
                 if(type == 'yes'){
+                    datos = $("#formularioRegistrarJugador").serialize();
+                    alert(datos);
                     $.ajax({
                         method:"post",
                         url:"ControladorRegistrarJugador",
-                        data:"nombre=edgar&correo=hola@hola.com&telefono=7731256415",
+                        data: datos,
                         success: function(resp){
                             alert(resp);
+                            if(resp==-1){
+                                Lobibox.notify("error",{
+                                    title:"Jugador no registrado",
+                                    msg:"No se pudo registrar al jugador, intentelo m&aacute;s tarde",
+                                    position:"bottom right",
+                                    delay:4000,
+                                    width:400,
+                                    iconSource:"fontAwesome"
+                                });
+                            }else{
+                                Lobibox.notify("success",{
+                                    title:"Jugador registrado",
+                                    msg:"Se registr&oacute; al jugador correctamente",
+                                    position:"bottom right",
+                                    delay:4000,
+                                    width:400,
+                                    iconSource:"fontAwesome"
+                                });
+                            }
                         }
-                    });
-                    Lobibox.notify("success",{
-                        title:"Jugador actualizado",
-                        msg:"Se registr&oacute; al jugador correctamente",
-                        position:"bottom right",
-                        delay:4000,
-                        width:400,
-                        iconSource:"fontAwesome"
                     });
                 }
             },
@@ -160,6 +191,34 @@ $(document).ready(function(){
 		lang:"es",
         modules : 'file',
 		onSuccess: function(){
+            jsonObj = [];
+            jugadores = [];
+            item = {}
+            item ["equipo"] = $('#freNombreEquipo').val();
+            item ["torneo"] = $('#freTorneo').val();
+            item ["uniforme"] = $('#freColorUniforme').val();
+            //item ["jugadores"] = [];
+            var numeroJugadores = 0;
+            $('#elegirJugadores').find('input[type="checkbox"]:checked').each(function () {
+                numeroJugadores++;
+                item2 = {}
+                item2 ['nombre'] = $(this).attr('data-jugador');
+                jugadores.push(item2);
+            });
+            if(numeroJugadores == 0){
+                Lobibox.notify("error",{
+                    title:"Plantilla insuficiente",
+                    msg:'La plantilla no tiene el n&uacute;mero m&iacute;nimo de jugadores',
+                    position:"bottom right",
+                    delay:5000,
+                    width:400,
+                    iconSource:"fontAwesome"
+                });
+                return false;
+            }
+            item ["jugadores"] = jugadores;
+            jsonObj.push(item);
+            jsonString = JSON.stringify(jsonObj);
             var lobibox = Lobibox.confirm({
                 msg: "Est&aacute;s seguro que quires registrar este equipo",
                 title: "Confirmaci&oacute;n",
@@ -179,19 +238,19 @@ $(document).ready(function(){
                 if(type == 'yes'){
                     $.ajax({
                         method:"post",
-                        url:"ControladorRegistrarJugador",
-                        data:"nombre=edgar&correo=hola@hola.com&telefono=7731256415",
+                        url:"ControladorRegistrarEquipo",
+                        data:jsonString,
                         success: function(resp){
                             alert(resp);
+                            Lobibox.notify("success",{
+                                title:"Equipo registrado",
+                                msg:"Se registr&oacute; al equipo correctamente",
+                                position:"bottom right",
+                                delay:4000,
+                                width:400,
+                                iconSource:"fontAwesome"
+                            });
                         }
-                    });
-                    Lobibox.notify("success",{
-                        title:"Equipo registrado",
-                        msg:"Se registr&oacute; al equipo correctamente",
-                        position:"bottom right",
-                        delay:4000,
-                        width:400,
-                        iconSource:"fontAwesome"
                     });
                 }
             },
@@ -199,5 +258,7 @@ $(document).ready(function(){
             return false;
         }
 	});
+    
+    
     
 });

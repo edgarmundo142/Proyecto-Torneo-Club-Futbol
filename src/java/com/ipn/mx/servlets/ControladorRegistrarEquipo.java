@@ -5,26 +5,18 @@
  */
 package com.ipn.mx.servlets;
 
-import com.ipn.mx.model.entities.Jugador;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashSet;
-import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
 
 /**
  *
  * @author edgar
  */
-public class ControladorConsultarJugadores extends HttpServlet {
+public class ControladorRegistrarEquipo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,34 +29,22 @@ public class ControladorConsultarJugadores extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String representante; /*Debe obtenerse de la cookie, sesion*/
-        /*
-        Consultar de la base de datos los jugadores del representante
+        /*Leer arreglo json. Es un arreglo de un elemento con los siguientes atributos
+            equipo
+            torneo
+            uniforme
+            jugadores -> este es un arreglo de objetos. Cada objeto es un jugador. Cada jugador
+                            tiene un solo atributo que es 'nombre', con el siguiente formato:
+                            nombre(s):apellidoPaterno:apellidoMaterno
         */
-        JsonArrayBuilder arreglo = Json.createArrayBuilder();
-            
-        String nombre = "edgar";
-        String apellidoPaterno = "arredondo";
-        String apellidoMaterno = "basurto";
-        String correo = "edgar@edgar.com";
-        String foto = "unaFoto.jpg";
+        
         /*
-        Dentro de un ciclo for recorrer el set resultante y por cada jugador enviar la siguiente
-        cadena
+            Como respuesta, enviar 0 si se registro el equipo, y -1 si hubo algun error
         */
-        //for(){
-        arreglo = arreglo.add(Json.createObjectBuilder()
-            .add("nombre", nombre)
-            .add("apellidoPaterno", apellidoPaterno)
-            .add("apellidoMaterno", apellidoMaterno)
-            .add("correo", correo)
-            .add("foto", foto));
-        //}
-        JsonArray value = arreglo.build();
         response.setContentType("text/plain;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.print(value);
+            out.println("-1");
         }
     }
 

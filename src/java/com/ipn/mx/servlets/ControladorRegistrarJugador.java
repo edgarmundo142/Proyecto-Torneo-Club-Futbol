@@ -30,17 +30,23 @@ public class ControladorRegistrarJugador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher vista;
-        String ruta;
+        /*
+        Nombre de atributos
+        nombre, apellidoPaterno, apellidoMaterno, correo, telefono
+        */
         String nombre = request.getParameter("nombre");
+        String apellidoPaterno = request.getParameter("apellidoPaterno");
+        String apellidoMaterno = request.getParameter("apellidoMaterno");
         String correo = request.getParameter("correo");
         String telefono = request.getParameter("telefono");
         response.setContentType("text/plain;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.print(nombre + ":");
-            out.print(correo + ":");
-            out.println(telefono);
+            /*
+            regresar -1 si no se pudo registrar.
+                        0 si se registro correctamente
+            */
+            out.println("-1");
         }
     }
 

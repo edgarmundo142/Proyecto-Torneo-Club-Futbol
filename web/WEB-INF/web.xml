@@ -16,6 +16,10 @@
         <servlet-name>ControladorConsultarJugadores</servlet-name>
         <servlet-class>com.ipn.mx.servlets.ControladorConsultarJugadores</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorRegistrarEquipo</servlet-name>
+        <servlet-class>com.ipn.mx.servlets.ControladorRegistrarEquipo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorRegistroRepresentante</servlet-name>
         <url-pattern>/ControladorRegistroRepresentante</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ControladorConsultarJugadores</servlet-name>
         <url-pattern>/ControladorConsultarJugadores</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorRegistrarEquipo</servlet-name>
+        <url-pattern>/ControladorRegistrarEquipo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
