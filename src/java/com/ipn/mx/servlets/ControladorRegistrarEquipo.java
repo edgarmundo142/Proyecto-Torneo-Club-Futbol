@@ -7,6 +7,12 @@ package com.ipn.mx.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringReader;
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import javax.json.JsonValue;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +35,22 @@ public class ControladorRegistrarEquipo extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*Leer arreglo json. Es un arreglo de un elemento con los siguientes atributos
+        String json = request.getParameter("json");
+        JsonReader reader = Json.createReader(new StringReader(json));
+        JsonArray arreglo = reader.readArray();
+        reader.close();
+        
+        JsonObject objeto = arreglo.getJsonObject(0);
+        String equipo = objeto.getString("equipo");
+        String torneo = objeto.getString("torneo");
+        String uniforme = objeto.getString("uniforme");
+        JsonArray jugadores = objeto.getJsonArray("jugadores");
+        JsonObject jugador;
+        for(int i = 0; i < jugadores.size(); i++){
+            jugador = jugadores.getJsonObject(i);
+        }
+
+        /*El objeto json tiene los siguientes atributos
             equipo
             torneo
             uniforme
@@ -44,7 +65,7 @@ public class ControladorRegistrarEquipo extends HttpServlet {
         response.setContentType("text/plain;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("-1");
+            out.println(-1);
         }
     }
 
