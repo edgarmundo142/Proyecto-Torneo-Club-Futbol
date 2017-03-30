@@ -60,7 +60,12 @@ $(document).ready(function(){
             });
         }
     });
-    
+    $(".verPlantilla").click(function(){
+        equipo = $(this).attr("data-name");
+        $('#modalVerP').modal({
+          keyboard: true
+        })
+    });
     $(".registrarJugador").click(function(){
         jugador = $(this).attr("data-name");
         $('#modalRegistrar').modal({
