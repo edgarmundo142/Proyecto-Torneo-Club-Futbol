@@ -200,4 +200,7 @@ $(document).ready(function(){
         }
 	});
     
+    var x = document.getElementById("misJugadores").rows.length;
+    alert(x);
+    
 });
