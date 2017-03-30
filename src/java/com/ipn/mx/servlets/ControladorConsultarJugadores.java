@@ -41,6 +41,9 @@ public class ControladorConsultarJugadores extends HttpServlet {
         /*
         Consultar de la base de datos los jugadores del representante
         */
+        
+        
+        
         JsonArrayBuilder arreglo = Json.createArrayBuilder();
             
         String nombre = "edgar";

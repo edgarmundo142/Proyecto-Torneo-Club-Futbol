@@ -12,9 +12,10 @@ import javax.servlet.http.Part;
  */
 public class FileUpload extends Thread {
     private final Part file;
-    private final String path = "/usuarios/";
     private final byte[] buffer = new byte[1024];
     private String name;
+    private String path = "/";
+    private String folder;
     private OutputStream out;
     private InputStream in;
     
@@ -25,6 +26,11 @@ public class FileUpload extends Thread {
     
     public static FileUpload createUploadFile(Part file, String name) {
         return new FileUpload(file, name);
+    }
+    
+    public void setFolder(String folder) {
+        this.folder = folder;
+        path += folder + "/";
     }
     
     private static String getFileExtension(Part part) {
@@ -39,20 +45,20 @@ public class FileUpload extends Thread {
     } 
     
     @Override
-        public void run() {
-            try {
-                this.in = this.file.getInputStream();
-                this.out = new java.io.FileOutputStream(new File(
-                        new File("").getAbsolutePath()
-                        + this.path + File.separator + this.name
-                        + getFileExtension(this.file)
-                ));
-                int read;
-                while((read = this.in.read(this.buffer)) != -1){
-                    this.out.write(this.buffer,0,read);
-                }
-            } catch (IOException ex) {
-                System.out.println(ex);
+    public void run() {
+        try {
+            this.in = this.file.getInputStream();
+            this.out = new java.io.FileOutputStream(new File(
+                    new File("").getAbsolutePath()
+                    + this.path + File.separator + this.name
+                    + getFileExtension(this.file)
+            ));
+            int read;
+            while((read = this.in.read(this.buffer)) != -1){
+                this.out.write(this.buffer,0,read);
             }
+        } catch (IOException ex) {
+            System.out.println(ex);
         }
+    }
 }

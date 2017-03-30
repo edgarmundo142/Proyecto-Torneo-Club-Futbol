@@ -1,18 +1,14 @@
 package com.ipn.mx.model.DAO;
 
-import com.ipn.mx.model.entities.Coordinador;
 import com.ipn.mx.model.entities.Equipo;
 import com.ipn.mx.model.entities.Jugador;
 import com.ipn.mx.model.entities.JugadorId;
 import com.ipn.mx.model.entities.Mensaje;
 import com.ipn.mx.model.entities.Representante;
 import com.ipn.mx.model.entities.RepresentanteId;
-import com.ipn.mx.model.entities.Torneo;
-import com.ipn.mx.utilities.AccessToSystem;
 
 import com.ipn.mx.utilities.HibernateUtil;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import java.util.Set;
@@ -41,7 +37,7 @@ public class RepresentanteDAO {
         }
     }
     
-    public void guardarDatosPersonalesRepresentante (Jugador datosRepresentante) {
+    public boolean guardarDatosPersonalesRepresentante (Jugador datosRepresentante) {
         Session sesion = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction transaccion = sesion.getTransaction();
         try {
@@ -53,7 +49,9 @@ public class RepresentanteDAO {
             if (transaccion != null && transaccion.isActive()) {
                 transaccion.rollback();
             }
+            return false;
         }
+        return true;
     }
     
     /**
@@ -115,9 +113,8 @@ public class RepresentanteDAO {
     * @param equipo
     * @return 
     */
-    public Set<Jugador> verPlantillaDeEquipo(Equipo equipo) {
-            // TODO - implement Representante.verPlantillaDeEquipo
-            throw new UnsupportedOperationException();
+    public List<Jugador> verPlantillaDeEquipo(Equipo equipo) {
+            return null;
     }
 
    /**
@@ -196,7 +193,7 @@ public class RepresentanteDAO {
     
     public static void main(String[] args) {
         RepresentanteDAO dao = new RepresentanteDAO();
-        JugadorId id = new JugadorId("lkksdfk", "kklsdkfskl", 
+        /*JugadorId id = new JugadorId("lkksdfk", "kklsdkfskl", 
                 "lsmsdkfsdkl", "weojew@lksdfjsdk");
         Jugador jugador = new Jugador();
         jugador.setId(id);
@@ -211,6 +208,6 @@ public class RepresentanteDAO {
                 System.out.println("Usuario: " + rep.getId().getJugadorCorreo());
                 System.out.println("Clave: " + rep.getContrasenia());
             }
-        }
+        }*/
     }
 }

@@ -129,11 +129,11 @@ $(document).ready(function(){
 	});
     
     $.validate({
-		form:"#formularioRegistrarJugador",
-		lang:"es",
-        modules : 'file',
-		onSuccess: function(){
-            var lobibox = Lobibox.confirm({
+            form:"#formularioRegistrarJugador",
+            lang:"es",
+            modules : 'file',
+            onSuccess: function(){
+                var lobibox = Lobibox.confirm({
                 msg: "Est&aacute;s seguro que quieres registrar al jugador ",
                 title: "Confirmaci&oacute;n",
                 buttons: {
@@ -156,8 +156,11 @@ $(document).ready(function(){
                         method:"post",
                         url:"ControladorRegistrarJugador",
                         data: datos,
+                        enctype: 'multipart/form-data',
+                        processData: false,
+                        contentType: false,
                         success: function(resp){
-                            alert(resp);
+                            //alert(resp);
                             if(resp==-1){
                                 Lobibox.notify("error",{
                                     title:"Jugador no registrado",

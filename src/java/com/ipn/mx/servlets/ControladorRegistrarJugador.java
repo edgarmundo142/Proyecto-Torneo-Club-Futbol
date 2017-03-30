@@ -5,18 +5,25 @@
  */
 package com.ipn.mx.servlets;
 
+import com.ipn.mx.model.DAO.RepresentanteDAO;
+import com.ipn.mx.model.entities.Jugador;
+import com.ipn.mx.model.entities.JugadorId;
+import com.ipn.mx.utilities.FileUpload;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author edgar
  */
+@javax.servlet.annotation.MultipartConfig
 public class ControladorRegistrarJugador extends HttpServlet {
 
     /**
@@ -30,6 +37,7 @@ public class ControladorRegistrarJugador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         /*
         Nombre de atributos
         nombre, apellidoPaterno, apellidoMaterno, correo, telefono
@@ -38,15 +46,37 @@ public class ControladorRegistrarJugador extends HttpServlet {
         String apellidoPaterno = request.getParameter("apellidoPaterno");
         String apellidoMaterno = request.getParameter("apellidoMaterno");
         String correo = request.getParameter("correo");
-        String telefono = request.getParameter("telefono");
+        //String telefono = request.getParameter("telefono");
         response.setContentType("text/plain;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            /*
-            regresar -1 si no se pudo registrar.
-                        0 si se registro correctamente
-            */
-            out.println("-1");
+            Part file = request.getPart("foto");
+            if (file != null) {
+                JugadorId cveJugador = new JugadorId(nombre, apellidoPaterno, apellidoMaterno, correo);
+                Jugador jugador = new Jugador(cveJugador, correo, false);
+                jugador.setFoto(correo);
+                RepresentanteDAO rdao = new RepresentanteDAO();
+                
+                if(file.getSize() > 0) {
+                    FileUpload fu = FileUpload.createUploadFile(file, correo);
+                    fu.setFolder("jugadores");
+                    fu.start();
+                    /*
+                        regresar -1 si no se pudo registrar.
+                                  0 si se registro correctamente
+                    */
+                    if (!rdao.guardarDatosPersonalesRepresentante(jugador))
+                        out.println("-1");
+                    else
+                        out.println("0");
+                } else {
+                    System.out.println("Archivo no cargado....");
+                    out.println("-1");
+                }
+            } else {
+                System.out.println("Archivo no cargado....");
+                out.println("-1");
+            }
+            out.flush();
         }
     }
 

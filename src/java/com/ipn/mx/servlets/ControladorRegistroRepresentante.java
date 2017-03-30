@@ -6,10 +6,8 @@ import com.ipn.mx.model.entities.JugadorId;
 import com.ipn.mx.model.entities.Representante;
 import com.ipn.mx.model.entities.RepresentanteId;
 import com.ipn.mx.utilities.FileUpload;
-import java.io.File;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,10 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemFactory;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 
 /**
@@ -60,7 +54,9 @@ public class ControladorRegistroRepresentante extends HttpServlet {
             
             if (file != null) {
                 if(file.getSize() > 0) {
-                    (FileUpload.createUploadFile(file, correo)).start();
+                    FileUpload fu = FileUpload.createUploadFile(file, correo);
+                    fu.setFolder("usuarios");
+                    fu.start();
                 }
                 /***Construccion de beans***/
                 JugadorId id = new JugadorId(nombre_rep, apellido_paterno, apellido_materno, correo);
