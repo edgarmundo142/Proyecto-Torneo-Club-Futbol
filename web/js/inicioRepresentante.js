@@ -1,12 +1,23 @@
 $(document).ready(function(){
     
     /*Inicializar tabla de jugadores registrados por el capitan*/
-    var htmlTabla;
+    var htmlTabla = '';
     $.ajax({
         method:"post",
         url:"ControladorConsultarJugadores",
         success: function(resp){
-            htmlTabla = resp;
+            var jugadores = $.parseJSON(resp);
+            for(i = 0; i < jugadores.length; i++){
+                htmlTabla += "<tr>\n<th scope='row'>1</th>\n<td>" + jugadores[i].nombre + "</td>\n" +
+                            "<td>" + jugadores[i].apellidoPaterno + "</td>\n" +
+                            "<td>" + jugadores[i].apellidoMaterno + "</td>\n" +
+                            "<td>" + jugadores[i].correo + "</td>\n" +
+                            "<td>" + jugadores[i].foto + "</td>\n" +
+                            "<td>\n" +
+                            "<i class='fa fa-edit fa-1x editPlayer icono' aria-hidden='true' data-name='" + jugadores[i].nombre + ":" + jugadores[i].apellidoPaterno + ":" + jugadores[i].apellidoMaterno + "'></i>\n" +
+                            "<i class='fa fa-close fa-1x deletePlayer icono' aria-hidden='true' data-name='" + jugadores[i].nombre + ":" + jugadores[i].apellidoPaterno + ":" + jugadores[i].apellidoMaterno + "'></i>\n" +
+                            "</td>\n</tr>";
+            }
             $('#tablaDeJugadoresRegistrados').html(htmlTabla);
             $(".editPlayer").click(function(){
                 jugador = $(this).attr("data-name");
@@ -160,6 +171,26 @@ $(document).ready(function(){
 		lang:"es",
         modules : 'file',
 		onSuccess: function(){
+            var cadenaParametros = '';
+            var numeroJugadores = 0;
+            $('#elegirJugadores').find('input[type="checkbox"]:checked').each(function () {
+                numeroJugadores++;
+                cadenaParametros+='jugador' + numeroJugadores + '=' + $(this).attr('dataJugador') + '&';
+               //this is the current checkbox
+            });
+            if(numeroJugadores == 0){
+                Lobibox.notify("error",{
+                    title:"Plantilla insuficiente",
+                    msg:'La plantilla no tiene el n&uacute;mero m&iacute;nimo de jugadores',
+                    position:"bottom right",
+                    delay:5000,
+                    width:400,
+                    iconSource:"fontAwesome"
+                });
+                return false;
+            }
+            cadenaParametros.slice(0, -1);
+            alert(numeroJugadores);
             var lobibox = Lobibox.confirm({
                 msg: "Est&aacute;s seguro que quires registrar este equipo",
                 title: "Confirmaci&oacute;n",
@@ -200,7 +231,6 @@ $(document).ready(function(){
         }
 	});
     
-    var x = document.getElementById("misJugadores").rows.length;
-    alert(x);
+    
     
 });
