@@ -115,7 +115,7 @@
                       <i class="fa fa-plus-square-o fa-2x registrarJugador icono" aria-hidden="true"></i>
                   </div>
                </div>
-                <table class="table table-hover table-responsive">
+                <table class="table table-hover table-responsive" id="misJugadores">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -142,7 +142,7 @@
                       <i class="fa fa-plus-square-o fa-2x registrarEquipo icono" aria-hidden="true"></i>
                   </div>
                </div>
-                <table class="table table-hover table-responsive">
+                <table class="table table-hover table-responsive" id="misEquipos">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -297,13 +297,14 @@
               <option>Asociaci&oacute;n</option>
               <option>R&aacute;pido</option>
             </select>
+          </div>
           <div class="form-group">
             <label for="freColorUniforme">Color del uniforme</label>
             <input type="text" class="form-control" id="freColorUniforme" data-validation="required" name="freColorUniforme">
           </div>
           <div class="form-group">
              <label for="jugadores">Plantilla del equipo</label>
-              <table class="table table-hover table-responsive" id="jugadpres">
+              <table class="table table-hover table-responsive" id="elegirJugadores">
                   <thead>
                     <tr>
                       <th>Seleccionar</th>
@@ -312,11 +313,11 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row"><input type="checkbox" class="form-control" data-jugador="Mark1"></th>
+                      <th scope="row"><input type="checkbox" class="form-control" id="freCheck1" data-jugador="Mark1"></th>
                       <td>Mark1</td>
                     </tr>
                     <tr>
-                      <th scope="row"><input type="checkbox" class="form-control" data-jugador="Mark2"></th>
+                      <th scope="row"><input type="checkbox" class="form-control" id="freCheck1" data-jugador="Mark2"></th>
                       <td>Mark2</td>
                     </tr>
                   </tbody>
