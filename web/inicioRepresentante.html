@@ -31,6 +31,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/navbar-fixed.js"></script>
 <script src="js/inicioRepresentante.js"></script>
+<script src="js/PerfilRepresentante.js"></script>
 <script language="javascript" type="text/javascript" src="plugins/lobibox/js/lobibox.min.js"></script>
 <script type="text/javascript" src="plugins/form-validator/jquery.form-validator.min.js"></script>
 
@@ -180,7 +181,31 @@
                 </table>
               </div>
               <div class="tab-pane" id="perfil" role="tabpanel">
-                  Perfil del representante
+                  <br><h2 class="text-light">Datos del Perfil <i class="fa fa-user fa-1x" aria-hidden="true"></i></h2>
+                  <br>
+                  <table class="table table-hover table-responsive">
+                  <thead>
+                    <tr>
+                      <th>Nombre(s)</th>
+                      <th>Apellido Paterno</th>
+                      <th>Apellido Materno</th>
+                      <th>Correo</th>
+                      <th>Fotograf&iacute;a</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mark1</td>
+                      <td>Otto</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                      <td>Foto</td>
+                    </tr>
+                  </tbody>
+                </table>
+                  <br>
+                  <a class="btn btn-secondary">Actualizar Informaci&oacute;n <i class="fa fa-edit fa-1x editarDatosPerfil icono" aria-hidden="true" data-name="Papus FC"></i></a>
+                  <a class="btn btn-secondary">Cambiar Contraseña <i class="fa fa-key fa-1x editarContraseñaPerfil icono" aria-hidden="true" data-name="Papus FC"></i></a> 
               </div>
             </div>
       </div>
@@ -328,6 +353,43 @@
             <button type="submit" class="btn btn-primary" id="actualizarJugador">Registrar equipo</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modalDatosPerfil-->
+<div class="modal fade" id="modalDatosPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--modalContraseñaPerfil-->
+<div class="modal fade" id="modalContraseñaPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
