@@ -1,4 +1,4 @@
-    <!doctype html>
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -71,7 +71,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <center><br><h1 class="text-light">Bienvenido "nombre"</h1></center>
+        <center><br><h1 class="text-light">Bienvenido Representante</h1></center>
          <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
               <li class="nav-item">
@@ -258,15 +258,15 @@
           </div>
           <div class="form-group">
             <label for="correo">Correo</label>
-            <input class="form-control" id="correo" placeholder="correo@ejemplo.com" data-validation="required email">
+            <input class="form-control" id="correo" placeholder="correo@ejemplo.com" data-validation="required email" name="correo">
           </div>
           <div class="form-group">
             <label for="telefono">Tel&eacute;fono</label>
-            <input type="text" class="form-control" id="telefono" placeholder="55-55-55-55-55" data-validation="custom" data-validation-regexp="^\d([- ]*\d){8,12}$" data-validation-length="max20" data-validation-error-msg="El dato ingresado no es tel&eacute;fono v&aacute;lido">
+            <input type="text" class="form-control" id="telefono" placeholder="55-55-55-55-55" data-validation="custom" data-validation-regexp="^\d([- ]*\d){8,12}$" data-validation-length="max20" data-validation-error-msg="El dato ingresado no es tel&eacute;fono v&aacute;lido" name="telefono">
           </div>
           <div class="form-group">
             <label for="foto">Fotograf&iacute;a</label>
-            <input type="file" class="form-control-file" id="foto" data-validation="required extension" data-validation-allowing="jpg, png, gif" data-validation-max-size="1M">
+            <input type="file" class="form-control-file" id="foto" name="foto" data-validation="extension required" data-validation-allowing="jpg, png, gif" data-validation-max-size="1M">
             <small id="fileHelp" class="form-text text-muted">Subir una fotograf&iacute;a semiformal del jugador.</small>
           </div>
           <div class="modal-footer">
@@ -293,7 +293,7 @@
         <form id="formularioActualizarJugador">
           <div class="form-group">
             <label for="nombre">Nombre completo</label>
-            <input type="text" class="form-control" id="nombre" value="Edgar Rodrigo Arredondo Basurto" disabled>
+            <input type="text" class="form-control" id="fajNombre" name="fajNombre" disabled>
           </div>
           <div class="form-group">
             <label for="correo">Correo</label>
