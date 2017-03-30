@@ -5,20 +5,29 @@ import com.ipn.mx.model.entities.Jugador;
 import com.ipn.mx.model.entities.JugadorId;
 import com.ipn.mx.model.entities.Representante;
 import com.ipn.mx.model.entities.RepresentanteId;
+import com.ipn.mx.utilities.FileUpload;
+import java.io.File;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 
 /**
  *
  * @author rafal
  */
+@javax.servlet.annotation.MultipartConfig
 public class ControladorRegistroRepresentante extends HttpServlet {
 
     /**
@@ -32,9 +41,14 @@ public class ControladorRegistroRepresentante extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        
         try {
             RequestDispatcher vista;
             String ruta;
+            
+            Part file = request.getPart("r-file-perfil");
+            
             /***Captura de campos del formulario***/
             String nombre_rep = request.getParameter("nombre_representante");
             String apellido_paterno = request.getParameter("apellido_paterno");
@@ -44,41 +58,42 @@ public class ControladorRegistroRepresentante extends HttpServlet {
             String boleta = request.getParameter("boleta_representante");
             String password_user = request.getParameter("password_representante");
             
-            System.out.println("Nombre: " + nombre_rep);
-            System.out.println("apellido_paterno: " + apellido_materno);
-            System.out.println("apellido_materno: " + apellido_materno);
-            System.out.println("telefono: " + telefono);
-            System.out.println("correo_representante: " + correo);
-            System.out.println("boleta_representante: " + boleta);
-            System.out.println("password_representante: " + password_user);
-            
-            /***Construccion de beans***/
-            JugadorId id = new JugadorId(nombre_rep, apellido_paterno, apellido_materno, correo);
-            Jugador jugador = new Jugador(id, "Foto3.jpg", false);
-            jugador.setClave(boleta);
-            
-            RepresentanteId idRep = new RepresentanteId(jugador.getId().getNombre(), jugador.getId().getApellidoPaterno(),
-                    jugador.getId().getApellidoMaterno(), jugador.getId().getCorreo());
-            Representante representante = new Representante(jugador, password_user, telefono);
-            representante.setId(idRep);
-            
-            /***Transacciones***/
-            RepresentanteDAO dao = new RepresentanteDAO();
-            try {
-                dao.guardarDatosPersonalesRepresentante(jugador);
-                dao.guardarRepresentante(representante);
-                System.out.println("Representante de Equipo registrado...");
-                ruta = "login.html";
-            } catch (Exception e) {
-                ruta = "jsp/ErrorRegistro.jsp?error=" + e.getMessage();
+            if (file != null) {
+                if(file.getSize() > 0) {
+                    (FileUpload.createUploadFile(file, correo)).start();
+                }
+                /***Construccion de beans***/
+                JugadorId id = new JugadorId(nombre_rep, apellido_paterno, apellido_materno, correo);
+                Jugador jugador = new Jugador(id, correo, false);
+                jugador.setClave(boleta);
+
+                RepresentanteId idRep = new RepresentanteId(jugador.getId().getNombre(), jugador.getId().getApellidoPaterno(),
+                        jugador.getId().getApellidoMaterno(), jugador.getId().getCorreo());
+                Representante representante = new Representante(jugador, password_user, telefono);
+                representante.setId(idRep);
+
+                /***Transacciones***/
+                RepresentanteDAO dao = new RepresentanteDAO();
+                try {
+                    dao.guardarDatosPersonalesRepresentante(jugador);
+                    dao.guardarRepresentante(representante);
+                    System.out.println("Representante de Equipo registrado...");
+                    ruta = "login.html";
+                } catch (Exception e) {
+                    ruta = "jsp/ErrorRegistro.jsp?error=" + e.getMessage();
+                }
+                try {
+                    vista = request.
+                            getRequestDispatcher(ruta);
+                    vista.forward(request, response);
+                } catch (ServletException | IOException ex) {
+                    System.out.println("Error de redireccion de pagina: " + ex.getMessage());
+                }
+            } else {
+                System.out.println("Archivo no cargado....");
             }
-            try {
-                vista = request.
-                        getRequestDispatcher(ruta);
-                vista.forward(request, response);
-            } catch (ServletException | IOException ex) {
-                System.out.println("Error de redireccion de pagina: " + ex.getMessage());
-            }
+            
+            
             
 //        response.setContentType("text/html;charset=UTF-8");
 //        try (PrintWriter out = response.getWriter()) {
@@ -95,6 +110,7 @@ public class ControladorRegistroRepresentante extends HttpServlet {
 //        }
         } catch (Exception ex) {
             System.out.println("Fallo al asignar archivo al sistema: " + ex.getMessage());
+            ex.printStackTrace();
         }
     }
 

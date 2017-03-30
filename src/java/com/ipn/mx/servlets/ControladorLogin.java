@@ -35,11 +35,11 @@ public class ControladorLogin extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         LoginDAO ldao = new LoginDAO();
         String user = request.getParameter("username");
         String pass = request.getParameter("password");
         Coordinador c = new Coordinador(user,pass,null);
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             int result = ldao.Login(c);
