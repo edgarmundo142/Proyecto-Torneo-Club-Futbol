@@ -21,6 +21,8 @@ $(document).ready(function(){
             $('#tablaDeJugadoresRegistrados').html(htmlTabla);
             $(".editPlayer").click(function(){
                 jugador = $(this).attr("data-name");
+                nombre = jugador.replace(/:/g,' ');
+                $('#fajNombre').val(nombre);
                 $('#modalActualizar').modal({
                   keyboard: true
                 })
@@ -132,7 +134,7 @@ $(document).ready(function(){
         modules : 'file',
 		onSuccess: function(){
             var lobibox = Lobibox.confirm({
-                msg: "Est&aacute;s seguro que quires registrar al jugador ",
+                msg: "Est&aacute;s seguro que quieres registrar al jugador ",
                 title: "Confirmaci&oacute;n",
                 buttons: {
                     yes: {
@@ -148,21 +150,34 @@ $(document).ready(function(){
                 },
                 callback: function(lobibox, type){
                 if(type == 'yes'){
+                    datos = $("#formularioRegistrarJugador").serialize();
+                    alert(datos);
                     $.ajax({
                         method:"post",
                         url:"ControladorRegistrarJugador",
-                        data:"nombre=edgar&correo=hola@hola.com&telefono=7731256415",
+                        data: datos,
                         success: function(resp){
                             alert(resp);
+                            if(resp==-1){
+                                Lobibox.notify("error",{
+                                    title:"Jugador no registrado",
+                                    msg:"No se pudo registrar al jugador, intentelo m&aacute;s tarde",
+                                    position:"bottom right",
+                                    delay:4000,
+                                    width:400,
+                                    iconSource:"fontAwesome"
+                                });
+                            }else{
+                                Lobibox.notify("success",{
+                                    title:"Jugador registrado",
+                                    msg:"Se registr&oacute; al jugador correctamente",
+                                    position:"bottom right",
+                                    delay:4000,
+                                    width:400,
+                                    iconSource:"fontAwesome"
+                                });
+                            }
                         }
-                    });
-                    Lobibox.notify("success",{
-                        title:"Jugador actualizado",
-                        msg:"Se registr&oacute; al jugador correctamente",
-                        position:"bottom right",
-                        delay:4000,
-                        width:400,
-                        iconSource:"fontAwesome"
                     });
                 }
             },
