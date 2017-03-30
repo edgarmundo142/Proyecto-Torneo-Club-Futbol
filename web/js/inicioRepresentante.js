@@ -104,7 +104,6 @@ $(document).ready(function(){
                 },
                 callback: function(lobibox, type){
                 if(type == 'yes'){
-                    alert('ok');
                     $.ajax({
                         method:"post",
                         url:"ControladorActualizarJugador",
