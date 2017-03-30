@@ -171,12 +171,19 @@ $(document).ready(function(){
 		lang:"es",
         modules : 'file',
 		onSuccess: function(){
-            var cadenaParametros = '';
+            jsonObj = [];
+            jugadores = [];
+            item = {}
+            item ["equipo"] = $('#freNombreEquipo').val();
+            item ["torneo"] = $('#freTorneo').val();
+            item ["uniforme"] = $('#freColorUniforme').val();
+            //item ["jugadores"] = [];
             var numeroJugadores = 0;
             $('#elegirJugadores').find('input[type="checkbox"]:checked').each(function () {
                 numeroJugadores++;
-                cadenaParametros+='jugador' + numeroJugadores + '=' + $(this).attr('dataJugador') + '&';
-               //this is the current checkbox
+                item2 = {}
+                item2 ['nombre'] = $(this).attr('data-jugador');
+                jugadores.push(item2);
             });
             if(numeroJugadores == 0){
                 Lobibox.notify("error",{
@@ -189,8 +196,9 @@ $(document).ready(function(){
                 });
                 return false;
             }
-            cadenaParametros.slice(0, -1);
-            alert(numeroJugadores);
+            item ["jugadores"] = jugadores;
+            jsonObj.push(item);
+            jsonString = JSON.stringify(jsonObj);
             var lobibox = Lobibox.confirm({
                 msg: "Est&aacute;s seguro que quires registrar este equipo",
                 title: "Confirmaci&oacute;n",
@@ -210,19 +218,19 @@ $(document).ready(function(){
                 if(type == 'yes'){
                     $.ajax({
                         method:"post",
-                        url:"ControladorRegistrarJugador",
-                        data:"nombre=edgar&correo=hola@hola.com&telefono=7731256415",
+                        url:"ControladorRegistrarEquipo",
+                        data:jsonString,
                         success: function(resp){
                             alert(resp);
+                            Lobibox.notify("success",{
+                                title:"Equipo registrado",
+                                msg:"Se registr&oacute; al equipo correctamente",
+                                position:"bottom right",
+                                delay:4000,
+                                width:400,
+                                iconSource:"fontAwesome"
+                            });
                         }
-                    });
-                    Lobibox.notify("success",{
-                        title:"Equipo registrado",
-                        msg:"Se registr&oacute; al equipo correctamente",
-                        position:"bottom right",
-                        delay:4000,
-                        width:400,
-                        iconSource:"fontAwesome"
                     });
                 }
             },
