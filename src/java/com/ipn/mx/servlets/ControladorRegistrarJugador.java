@@ -42,21 +42,27 @@ public class ControladorRegistrarJugador extends HttpServlet {
         Nombre de atributos
         nombre, apellidoPaterno, apellidoMaterno, correo, telefono
         */
+        Part file = request.getPart("foto");
         String nombre = request.getParameter("nombre");
         String apellidoPaterno = request.getParameter("apellidoPaterno");
         String apellidoMaterno = request.getParameter("apellidoMaterno");
         String correo = request.getParameter("correo");
+        
+        System.out.println("Nombre: " + nombre);
+        System.out.println("apellidoPaterno: " + apellidoPaterno);
+        System.out.println("apellidoMaterno: " + apellidoMaterno);
+        System.out.println("correo: " + correo);
         //String telefono = request.getParameter("telefono");
         response.setContentType("text/plain;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Part file = request.getPart("foto");
             if (file != null) {
                 JugadorId cveJugador = new JugadorId(nombre, apellidoPaterno, apellidoMaterno, correo);
                 Jugador jugador = new Jugador(cveJugador, correo, false);
                 jugador.setFoto(correo);
                 RepresentanteDAO rdao = new RepresentanteDAO();
-                
+                System.out.println("Archivo existente...");
                 if(file.getSize() > 0) {
+                    System.out.println("Archivo existente...");
                     FileUpload fu = FileUpload.createUploadFile(file, correo);
                     fu.setFolder("jugadores");
                     fu.start();
