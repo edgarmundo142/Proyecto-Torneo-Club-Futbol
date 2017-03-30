@@ -151,13 +151,11 @@ $(document).ready(function(){
                 callback: function(lobibox, type){
                 if(type == 'yes'){
                     datos = $("#formularioRegistrarJugador").serialize();
-                    alert(datos);
                     $.ajax({
                         method:"post",
                         url:"ControladorRegistrarJugador",
                         data: datos,
                         success: function(resp){
-                            alert(resp);
                             if(resp==-1){
                                 Lobibox.notify("error",{
                                     title:"Jugador no registrado",
@@ -239,17 +237,28 @@ $(document).ready(function(){
                     $.ajax({
                         method:"post",
                         url:"ControladorRegistrarEquipo",
-                        data:jsonString,
+                        data:"json=" + jsonString,
                         success: function(resp){
                             alert(resp);
-                            Lobibox.notify("success",{
-                                title:"Equipo registrado",
-                                msg:"Se registr&oacute; al equipo correctamente",
-                                position:"bottom right",
-                                delay:4000,
-                                width:400,
-                                iconSource:"fontAwesome"
-                            });
+                            if(resp==-1){
+                                Lobibox.notify("error",{
+                                    title:"Equipo no registrado",
+                                    msg:"No se pudo registrar al equipo, intentelo m&aacute;s tarde",
+                                    position:"bottom right",
+                                    delay:4000,
+                                    width:400,
+                                    iconSource:"fontAwesome"
+                                });
+                            }else{
+                                Lobibox.notify("success",{
+                                    title:"Equipo registrado",
+                                    msg:"Se registr&oacute; al equipo correctamente",
+                                    position:"bottom right",
+                                    delay:4000,
+                                    width:400,
+                                    iconSource:"fontAwesome"
+                                });
+                            }
                         }
                     });
                 }
