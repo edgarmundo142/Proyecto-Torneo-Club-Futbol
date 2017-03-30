@@ -154,7 +154,6 @@ $(document).ready(function(){
                         method:"post",
                         url:"ControladorRegistrarJugador",
                         data: datos,
-                        enctype: "multipart/form-data",
                         success: function(resp){
                             if(resp==-1){
                                 Lobibox.notify("error",{
@@ -166,6 +165,57 @@ $(document).ready(function(){
                                     iconSource:"fontAwesome"
                                 });
                             }else{
+                                htmlTabla += "<tr>\n<th scope='row'>1</th>\n<td>" + $("#formularioRegistrarJugador #nombre").val() + "</td>\n" +
+                                "<td>" + $("#formularioRegistrarJugador #apellidoPaterno").val() + "</td>\n" +
+                                "<td>" + $("#formularioRegistrarJugador #apellidoMaterno").val() + "</td>\n" +
+                                "<td>" + $("#formularioRegistrarJugador #correo").val() + "</td>\n" +
+                                "<td>" + "foto" + "</td>\n" +
+                                "<td>\n" +
+                                "<i class='fa fa-edit fa-1x editPlayer icono' aria-hidden='true' data-name='" + $("#formularioRegistrarJugador #nombre").val() + ":" + $("#formularioRegistrarJugador #apellidoPaterno").val() + ":" + $("#formularioRegistrarJugador #apellidoMaterno").val() + "'></i>\n" +
+                                "<i class='fa fa-close fa-1x deletePlayer icono' aria-hidden='true' data-name='" + $("#formularioRegistrarJugador #nombre").val() + ":" + $("#formularioRegistrarJugador #apellidoPaterno").val() + ":" + $("#formularioRegistrarJugador #apellidoMaterno").val() + "'></i>\n" +
+                                "</td>\n</tr>";
+                                $('#tablaDeJugadoresRegistrados').html(htmlTabla);
+                                $(".editPlayer").click(function(){
+                                    jugador = $(this).attr("data-name");
+                                    nombre = jugador.replace(/:/g,' ');
+                                    $('#fajNombre').val(nombre);
+                                    $('#modalActualizar').modal({
+                                      keyboard: true
+                                    })
+                                });
+
+                                $(".deletePlayer").click(function(){
+                                    jugador = $(this).attr("data-name");
+                                    nombre = jugador.replace(/:/g,' ');
+                                    var lobibox = Lobibox.confirm({
+                                        msg: "Est&aacute;s seguro que quieres eliminar al jugador " + nombre,
+                                        title: "Confirmaci&oacute;n",
+                                        buttons: {
+                                            yes: {
+                                                'class': 'btn btn-success',
+                                                text: "Si",
+                                                closeOnClick: true
+                                            },
+                                            cancel: {
+                                                'class': 'btn btn-danger',
+                                                text: 'Cancelar',
+                                                closeOnClick: true
+                                            }
+                                        },
+                                        callback: function(lobibox, type){
+                                            if(type == 'yes'){
+                                                Lobibox.notify("success",{
+                                                    title:"Jugador eliminado",
+                                                    msg:"Se elimino a " + nombre + ' correctamente',
+                                                    position:"bottom right",
+                                                    delay:5000,
+                                                    width:400,
+                                                    iconSource:"fontAwesome"
+                                                });
+                                            }
+                                        },
+                                    });
+                                });
                                 Lobibox.notify("success",{
                                     title:"Jugador registrado",
                                     msg:"Se registr&oacute; al jugador correctamente",
