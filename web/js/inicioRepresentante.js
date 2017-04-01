@@ -1,3 +1,5 @@
+/*Reemplazar la linea 154 .serialize por la actual FormData(). En la linea 160, en la consulta ajax se agrego processData: false*/
+
 $(document).ready(function(){
     
     /*Inicializar tabla de jugadores registrados por el capitan*/
@@ -149,11 +151,13 @@ $(document).ready(function(){
                 },
                 callback: function(lobibox, type){
                 if(type == 'yes'){
-                    datos = $("#formularioRegistrarJugador").serialize();
+                    datos = new FormData($("#formularioRegistrarJugador")[0]);
                     $.ajax({
                         method:"post",
                         url:"ControladorRegistrarJugador",
                         data: datos,
+                        contentType:false,
+                        processData: false,
                         success: function(resp){
                             if(resp==-1){
                                 Lobibox.notify("error",{

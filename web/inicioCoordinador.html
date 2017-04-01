@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Liga de f&uacute;tbol ESCOM-IPN</title>
+<link rel="stylesheet" href="css/index.css">
+<!-- Bootstrap 4 -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<!-- Custom Styles for this theme -->
+<link rel="stylesheet" href="css/navbar-fixed.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/jquery-ui.min.css">
+<link rel="stylesheet" href="css/jquery-ui.theme.css">
+
+<!-- Font awesome --  biblioteca de iconos -->
+<link rel="stylesheet" type="text/css" href="css/font-awesome-4.6.3/css/font-awesome.min.css">
+
+<!-- Estilos particulares para esta pagina -->
+<link rel="stylesheet" href="css/inicioRepresentante.css">
+
+<!-- Estilos de lobibox (notificaciones) -->
+<link rel="stylesheet" type="text/css" href="plugins/lobibox/css/lobibox.min.css">
+
+<!-- Estilos del form validator-->
+<link rel="stylesheet" type="text/css" href="plugins/form-validator/theme-default.min.css">
+
+<!-- Scripts -->
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/tether.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/navbar-fixed.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/inicioCoordinador.js"></script>
+<script src="js/misFunciones.js"></script>
+<script language="javascript" type="text/javascript" src="plugins/lobibox/js/lobibox.min.js"></script>
+<script type="text/javascript" src="plugins/form-validator/jquery.form-validator.min.js"></script>
+
+<script>
+    $(function () {
+        $(".fecha").datepicker();
+    });
+</script>
+
+<style>
+    .sepMargin { 
+        margin: 3%;
+        padding: .2%;
+    }
+</style>
+
+</head>
+
+<body>
+<nav class="navbar navbar-toggleable-sm fixed-top bg-primary navbar-inverse">
+            <div class="col-sm-4">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="images/logoescom(1).png" height="50">
+                </a>
+            </div>    
+            			   <!--8-->
+                                   
+            <div class="col-sm-4 collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+              <ul class="nav navbar-nav navbar-toggleable-lg">
+                 <li class="nav-item">
+                  <a class="nav-link active" href="index.html"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+                <div class="col-sm-4 collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="nav navbar-nav navbar-toggleable-lg">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html"> <i class="fa fa-sign-out fa-3x" aria-hidden="true"></i></a>
+                </li>
+              </ul>                
+            </div>   
+        </nav>
+    
+<div class="container-fluid section bg-primary text-center setStadium2" id="inicio" style="height: 100%"><!--style="height: 15%; margin-top: 74px;"-->
+
+    <div class="container section" id="section1" >
+  
+        <div class="row" style="background-color: white">
+      <div class="col-lg-12">
+          <center><br><h1 class="text-light" style="align-content: top; color: black">¡ Bienvenido !</h1></center>    <br>
+         <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" align="center">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#inicio" role="tab">Principal</a>
+              </li>
+			  <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#fechas" role="tab">Crear Torneo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#actualizar" role="tab">Actualizar fecha y hora del juego</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#registrar" role="tab">Registrar resultado de partido</a>
+              </li>
+			  <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#asignar" role="tab">Asignar grupo</a>
+              </li>
+			  <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#vetar" role="tab">Vetar equipo</a>
+              </li>
+			  <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#generar" role="tab">Generar reportes</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content" >
+              <!--  ---------------------------------------- -->
+			  <div class="tab-pane" id="inicio" role="tabpanel" style="color: black">
+                  Pantalla inicio representante 1
+              </div>
+			  <!--  ---------------------------------------- -->
+			  <div class="tab-pane" id="fechas" role="tabpanel" style="color: black">
+                  <!-- INSERTE AQUI EL CODIGO DE LA PANTALLA CREAR TORNEO-->
+				  <form method="GET" action="#" class="form-horizontal">
+                    <div class="form-group sepMargin">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="control-label" for="nombreTorneo"><h4>Nombre del torneo:</h4></label>
+                            </div>
+
+                            <div class="col-sm-8">
+                                <select class="form-control" id="nombreTorneo">
+                                    <option>Cl&aacute;sico
+                                    <option>Estudiante
+                                    <option>Pavo
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group sepMargin">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="control-label" for="tipoTorneo"><h4>Tipo de torneo: </h4></label>
+                            </div>
+
+                            <div class="col-sm-8">
+                                <select class="form-control" id="tipoTorneo">
+                                    <option>Asociaci&oacute;n
+                                    <option>R&aacute;pido
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group sepMargin">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="control-label" for="duracion"><h4>Duraci&oacute;n:</h4></label>
+                            </div>
+
+                            <div class="col-sm-3 text-center">
+                                <input type="text" class="fecha form-control">
+                            </div>
+
+                            <div class="col-sm-2 text-center">
+                                <label><h4>a</h4></label>
+                            </div>
+
+                            <div class="col-sm-3 text-center">
+                                <input type="text" class="fecha form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group sepMargin">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label><h4>Fecha de inicio de torneo:</h4></label>
+                            </div>
+
+                            <div class="col-sm-6 text-center">
+                                <input type="text" class="fecha form-control">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+              </div>
+			  <!--  ---------------------------------------- -->
+			  <div class="tab-pane" id="actualizar" role="tabpanel" style="color: black">
+			  <!-- INSERTE AQUI EL CODIGO DE LA PANTALLA ACTUALIZAR FECHA Y HORA DEL JUEGO-->
+                  Pantalla  ACTUALIZAR FECHA Y HRA DEL JUEGO
+              </div>
+			  <!--  ---------------------------------------- -->
+			  <div class="tab-pane" id="registrar" role="tabpanel" style="color: black">
+			  <!-- INSERTE AQUI EL CODIGO DE LA PANTALLA REGISTRAR RESULTADO-->
+                  Pantalla REGISTRAR RESULTADO
+              </div>
+			  <!--  ---------------------------------------- -->
+			  <div class="tab-pane" id="asignar" role="tabpanel" style="color: black">
+			  <!-- INSERTE AQUI EL CODIGO DE LA PANTALLA ASIGNAR GRUPO-->
+                          
+				  <br><h2 class="text-light">Solicitudes pendientes de acceso al torneo  <i class="fa fa-soccer-ball-o fa-1x" aria-hidden="true"></i></h2>
+               <br>
+			<div style="align-content:  center">	
+                <table class="table table-hover table-responsive" id="misEquipos" style="justify-content: center">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Equipo</th>
+					  <th> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Papus FC</td>
+                      <td>
+                         <i class="fa fa-check fa-1x registrarEquipo icono" aria-hidden="true" data-name="Papus FC"></i>
+						<i class="fa fa-close fa-1x deletePlayer icono" aria-hidden="true" data-name="Papus FC"></i>
+						
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Club Atletico San Pancho</td>
+                      <td>
+                        <i class="fa fa-check fa-1x registrarEquipo icono" aria-hidden="true" data-name="Papus FC"></i>
+						<i class="fa fa-close fa-1x deletePlayer icono" aria-hidden="true" data-name="Papus FC"></i>
+						
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+               </div>
+              </div>
+			  <!--  ---------------------------------------- -->
+			 
+			  <div class="tab-pane" id="vetar" role="tabpanel" style="color: black">
+				 <!-- INSERTE AQUI EL CODIGO DE LA PANTALLA VETAR EQUIPO-->
+                  Pantalla vetar equipo
+              </div>
+			  <!-- -----------------------------------  -->
+			  
+			  <div class="tab-pane" id="generar" role="tabpanel" style="color: black">
+			  <!-- INSERTE AQUI EL CODIGO DE LA PANTALLA GENERAR REPORTES-->
+                  Pantalla generar reportes
+              </div>
+			  <!-- --------------------------------- -->
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<!-- MODALES -->
+<!-- modal Asignar grupo-->
+<div class="modal fade" id="modalRegistrarEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Asignar grupo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+										<table class="table table-bordered table-homie"  id="highlight-table">
+											<thead>
+											</thead>
+											<tbody>
+												<tr class="success">
+													<td>Grupo A</td>
+													<td>1</td>
+													<td>2</td>
+													<td>3</td>
+													<td>4</td>
+												</tr>
+												
+												<tr class="success">
+													<td>Grupo B</td>
+													<td>1</td>
+													<td>2</td>
+													<td>3</td>
+													<td>4</td>
+												</tr>
+												
+												<tr class="danger">
+													<td>Grupo C</td>
+													<td>1</td>
+													<td>2</td>
+													<td>3</td>
+													<td>4</td>
+												</tr>
+												
+												<tr class="danger">
+													<td>Grupo D</td>
+													<td>1</td>
+													<td>2</td>
+													<td>3</td>
+													<td>4</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+		
+		
+		
+		
+		<div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="actualizarJugador">Asignar</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--TERMINAN MODALES -->
+</body>
+</html>

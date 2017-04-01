@@ -62,18 +62,19 @@ public class ControladorRegistrarJugador extends HttpServlet {
                 RepresentanteDAO rdao = new RepresentanteDAO();
                 System.out.println("Archivo existente...");
                 if(file.getSize() > 0) {
-                    System.out.println("Archivo existente...");
-                    FileUpload fu = FileUpload.createUploadFile(file, correo);
-                    fu.setFolder("jugadores");
-                    fu.start();
                     /*
                         regresar -1 si no se pudo registrar.
                                   0 si se registro correctamente
                     */
                     if (!rdao.guardarDatosPersonalesRepresentante(jugador))
                         out.println("-1");
-                    else
+                    else{
+                        System.out.println("Archivo existente...");
+                        FileUpload fu = FileUpload.createUploadFile(file, correo);
+                        fu.setFolder("jugadores");
+                        fu.start();
                         out.println("0");
+                    }
                 } else {
                     System.out.println("Archivo no cargado....");
                     out.println("-1");

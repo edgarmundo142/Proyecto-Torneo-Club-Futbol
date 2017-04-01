@@ -1,4 +1,5 @@
-	.btn-primary.active,.btn-primary:active,.show>.btn-primary.dropdown-toggle {
+.btn-primary.active,.btn-primary:active,.show>.btn-primary.dropdown-toggle {
+    
 color:#fff;
 	background-color:#0275d8;
 	background-image:none;
@@ -12,8 +13,59 @@ color:#fff;
 .navbar-toggler-right {
     position: fixed;
     right: 1rem;
+}
+.container {padding: 80px 120px;}
 
-@media (max-width:576px) {
+  .bg-1 {
+      background: #005894;
+      color: #bdbdbd;
+  }
+  .bg-1 h3 {color: #fff;}
+  .bg-1 p {font-style: italic;}
+  
+  .bg-2 {
+      background: #ffffff;
+      color: #000000;
+  }
+  .bg-2 h3 {color: #000;}
+  .bg-2 p {font-style: italic;}
+  
+h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+  }
+  .open .dropdown-toggle {
+      color: #fff;
+      background-color: #555 !important;
+  }
+  .dropdown-menu li a {
+      color: #000 !important;
+  }
+  .dropdown-menu li a:hover {
+      background-color: red !important;
+  }
+  
+  
+h1{font-size: 350%;}
+
+.setStadium {
+    display: inline-block;
+    background-image: url('../images/f1.jpeg');
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+.setStadium2 {
+    display: inline-block;
+    background-image: url('../images/stadium.jpg');
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+@media(max-width:576px) {
 	.col-sm {
 		-webkit-flex-basis:0;
 		-ms-flex-preferred-size:0;

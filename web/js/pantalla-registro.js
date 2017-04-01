@@ -1,3 +1,5 @@
+/*En la consulta ajax de la linea 13 se elimino la opcion succes: fucntion*/
+
 $(document).ready(function () {
    $("#btn-back").click(function () {
        window.location.href = "index.html";
@@ -13,9 +15,6 @@ $(document).ready(function () {
                 url:"ControladorRegistroRepresentante",
                 data:datos,
                 contentType:false,
-                success: function(resp){
-
-                }
             });
             return false;
         }
