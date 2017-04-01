@@ -11,60 +11,85 @@ Pantalla de registro del representante del equipo.
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Bootstrap 4 -->
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome-4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/index.css">
         <!-- Custom Styles for this theme -->
-        <link rel="stylesheet" type="text/css" href="css/navbar-fixed.css">
-        <link rel="stylesheet" type="text/css" href="css/fileinput.css">       
-        
+        <link rel="stylesheet" href="css/navbar-fixed.css">
+        <link rel="stylesheet" type="text/css" href="css/fileinput.css">
         <link rel="stylesheet" type="text/css" href="css/registro-representante.css">
         <link rel="stylesheet" type="text/css" href="plugins/form-validator/theme-default.min.css">
+        <style type="text/css">
+            legend.legendStyle {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            fieldset.fsStyle {
+                font-family: Verdana, Arial, sans-serif;
+                font-size: small;
+                font-weight: normal;
+                border: 1px solid #999999;
+                padding: 4px;
+                padding-left: 25px;
+                padding-right: 10px;
+                margin: 1px;
+            }
+            legend.legendStyle {
+                font-size: 90%;
+                color: #888888;
+                background-color: transparent;
+                font-weight: bold;
+            }
+            legend {
+                width: auto;
+                border-bottom: 0px;
+            }
+        </style>
     </head>
     <body>
         <nav class="navbar navbar-toggleable-sm fixed-top bg-primary navbar-inverse">
-            <div class="col-sm-1">
+            <div class="col-sm-4">
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand" href="#">
                     <img src="images/logoescom(1).png" height="50">
                 </a>
+            </div>    
+            			   <!--8-->
+            <div class="col-sm-4 collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+              <ul class="nav navbar-nav navbar-toggleable-lg">
+                 <li class="nav-item">
+                  <a class="nav-link active" href="index.html"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                </li>
+              </ul>
             </div>
-            <div class="col-sm-3 text-center">
-                <div class="btn-group " data-toggle="buttons" >
-                    <label class="btn btn-primary active" >
-                        <input type="radio" name="options" id="tor-asociacion" autocomplete="off" checked> Asociaci&oacute;n
-                    </label>
-                    <label class="btn btn-primary ">
-                        <input type="radio" name="options" id="tor-rapido" autocomplete="off"> R&aacute;pido
-                    </label>
-                </div>
-            </div>
-
-            <div class="col-sm-8 collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Iniciar sesi&oacute;n</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="col-sm-4 collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="nav navbar-nav navbar-toggleable-lg">
+                <li class="nav-item">
+                  <a class="nav-link" href="login.html"> <i class="fa fa-sign-in fa-3x" aria-hidden="true"></i></a>
+                </li>
+              </ul>                
+            </div>   
         </nav>
+        
         <section>
-            <div class="container-fluid">
+   
+            <div class="container setStadium" >
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="jumbotron jumbotron-fluid">
+                        <div class="jumbotron-fluid">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-4"></div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-5">
                                         <br>
-                                        <h1 class="display-3">Reg&iacute;strate </h1>
+                                        <h1 class="display-3" style="color:white;">Reg&iacute;strate </h1>
                                     </div>
                                     <div class="col-md-4"></div>
                                 </div>
                                 <hr class="my-4">
-                                <div class="row">
+                                <div class="row jumbotron" style=" justify-content: center">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-7">
                                         <form id="formulario-registro-representante" autocomplete="off" target="_self" action="ControladorRegistroRepresentante" method="post" enctype="multipart/form-data">
@@ -220,14 +245,15 @@ Pantalla de registro del representante del equipo.
                     </div>
                 </div>
             </div>
+               
         </section>
         <!-- Scripts -->
-        <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
-        <script type="text/javascript" src="js/tether.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script src="js/jquery-3.2.0.min.js"></script>
+        <script src="js/tether.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="plugins/form-validator/jquery.form-validator.min.js"></script>
-        <script type="text/javascript" src="js/navbar-fixed.js"></script>
-        <script type="text/javascript" src="js/pantalla-registro.js"></script>
+        <script src="js/navbar-fixed.js"></script>
+        <script src="js/pantalla-registro.js"></script>
         <script type="text/javascript" src="js/fileinput.js"></script>
     </body>
 </html>
