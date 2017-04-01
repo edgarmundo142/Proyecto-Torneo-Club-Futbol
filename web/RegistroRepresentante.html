@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!--
+Pantalla de registro del representante del equipo.
+-->
+<html>
+    <head>
+        <title>Liga de f&uacute;tbol ESCOM-IPN</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap 4 -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome-4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/index.css">
+        <!-- Custom Styles for this theme -->
+<<<<<<< HEAD
+        <link rel="stylesheet" href="css/navbar-fixed.css">
+        <link rel="stylesheet" type="text/css" href="css/fileinput.css">
+=======
+        <link rel="stylesheet" type="text/css" href="css/navbar-fixed.css">
+        <link rel="stylesheet" type="text/css" href="css/fileinput.css">
+        
+>>>>>>> e824c8d3cb23b8fd56e6dc46084d85ad09fea5ab
+        <link rel="stylesheet" type="text/css" href="css/registro-representante.css">
+        <link rel="stylesheet" type="text/css" href="plugins/form-validator/theme-default.min.css">
+        <style type="text/css">
+            legend.legendStyle {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            fieldset.fsStyle {
+                font-family: Verdana, Arial, sans-serif;
+                font-size: small;
+                font-weight: normal;
+                border: 1px solid #999999;
+                padding: 4px;
+                padding-left: 25px;
+                padding-right: 10px;
+                margin: 1px;
+            }
+            legend.legendStyle {
+                font-size: 90%;
+                color: #888888;
+                background-color: transparent;
+                font-weight: bold;
+            }
+            legend {
+                width: auto;
+                border-bottom: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-toggleable-sm fixed-top bg-primary navbar-inverse">
+            <div class="col-sm-4">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="images/logoescom(1).png" height="50">
+                </a>
+            </div>    
+            			   <!--8-->
+            <div class="col-sm-4 collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+              <ul class="nav navbar-nav navbar-toggleable-lg">
+                 <li class="nav-item">
+                  <a class="nav-link active" href="index.html"><i class="fa fa-home fa-3x" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+                <div class="col-sm-4 collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="nav navbar-nav navbar-toggleable-lg">
+                <li class="nav-item">
+                  <a class="nav-link" href="login.html"> <i class="fa fa-sign-in fa-3x" aria-hidden="true"></i></a>
+                </li>
+              </ul>                
+            </div>   
+        </nav>
+        
+        <section>
+   
+            <div class="container setStadium" >
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="jumbotron-fluid">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-5">
+                                        <br>
+                                        <h1 class="display-3" style="color:white;">Reg&iacute;strate </h1>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+                                <hr class="my-4">
+                                <div class="row jumbotron" style=" justify-content: center">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-7">
+                                        <form id="formulario-registro-representante" autocomplete="off" target="_self" action="ControladorRegistroRepresentante" method="post" enctype="multipart/form-data">
+                                            <fieldset class="fsStyle">
+                                                <legend class="legendStyle">
+                                                    <h3>Datos personales:</h3>
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="nombre_representante">Nombre(s): </label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="nombre_representante" 
+                                                                   name="nombre_representante" 
+                                                                   placeholder="Introduce tu nombre" 
+                                                                   data-validation="required" 
+                                                                   data-validation-error-msg="Ingresa tu nombre">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="apellido_paterno">Apellido Paterno: </label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="apellido_paterno" 
+                                                                   name="apellido_paterno" 
+                                                                   placeholder="Introduce tu apellido paterno"
+                                                                   data-validation="required" 
+                                                                   data-validation-error-msg="Ingresa tu apellido paterno">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="apellido_materno">Apellido Materno: </label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="apellido_materno" 
+                                                                   name="apellido_materno" 
+                                                                   placeholder="Introduce tu apellido materno"
+                                                                   data-validation="required" 
+                                                                   data-validation-error-msg="Ingresa tu apellido materno">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="tel_representante">Tel&eacute;fono: </label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="tel_representante" 
+                                                                   name="tel_representante" 
+                                                                   placeholder="55-55-55-55-55" 
+                                                                   data-validation="custom" 
+                                                                   data-validation-regexp="^\d([- ]*\d){8,12}$" 
+                                                                   data-validation-length="max20" 
+                                                                   data-validation-error-msg="El dato ingresado no es tel&eacute;fono v&aacute;lido">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="correo_representante">Correo electronico: </label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="correo_representante" 
+                                                                   name="correo_representante" 
+                                                                   placeholder="Introduce tu correo electronico"
+                                                                   data-validation="email"
+                                                                   data-validation-error-msg="Direcci&oacute;n de correo incorrecto">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="boleta_representante">Numero de boleta: </label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="boleta_representante" 
+                                                                   name="boleta_representante" 
+                                                                   placeholder="Introduce tu no. de boleta"
+                                                                   data-validation="alphanumeric"
+                                                                   data-validation-error-msg="Clave boleta incorrecta">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset><br/>
+                                            <fieldset class="fsStyle">
+                                                <legend class="legendStyle">
+                                                    <h3>Datos de perfil de usuario:</h3>
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Selecciona un archivo: </label>
+                                                            <input type="file" id="r-file-perfil"
+                                                                   name="r-file-perfil"
+                                                                   class="file" multiple data-min-file-count="1"
+                                                                   data-show-preview="false"
+                                                                   data-validation="extension required"
+                                                                   data-validation-allowing="jpg, png, gif"
+                                                                   data-validation-max-size="2M"
+                                                                   data-validation-error-msg="Tama&ntilde;o de archivo sobrepasa del limite."/> <!-- Archivo -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset><br/>
+                                            <fieldset class="fsStyle">
+                                                <legend class="legendStyle">
+                                                    <h3>Datos del sistema:</h3>
+                                                </legend>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="password_representante">Contrase&ntilde;a: </label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="password_representante" 
+                                                                   name="password_representante" 
+                                                                   placeholder="Introduce tu contrase&ntilde;a"
+                                                                   data-validation="alphanumeric"
+                                                                   data-validation-error-msg="Contrase&ntilde;a tiene que contener caracteres alfanum&eacute;ricos">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="confirm_password_representante">Confirmar contrase&ntilde;a: </label>
+                                                            <input type="text" 
+                                                                   class="form-control" 
+                                                                   id="confirm_password_representante" 
+                                                                   name="confirm_password_representante" 
+                                                                   placeholder="Confirma tu contraseña" 
+                                                                   data-validation="confirmation"
+                                                                   data-validation-confirm="password_representante"
+                                                                   data-validation-error-msg="Este campo no concuerda con la contrase&ntilde;a">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset><br>
+                                            <div class="row">
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-4">
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <button type="submit" name="registrarUsuario" id="registrarUsuario" class="btn btn-primary btn-lg">Registrar</button>
+                                                        <button type="button" name="btn-back" id="btn-back" class="btn btn-secondary btn-lg">Regresar</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4"></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               
+        </section>
+        <!-- Scripts -->
+        <script src="js/jquery-3.2.0.min.js"></script>
+        <script src="js/tether.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="plugins/form-validator/jquery.form-validator.min.js"></script>
+        <script src="js/navbar-fixed.js"></script>
+        <script src="js/pantalla-registro.js"></script>
+        <script type="text/javascript" src="js/fileinput.js"></script>
+    </body>
+</html>
